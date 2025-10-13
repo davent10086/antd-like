@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.node.json",
+  "compilerOptions": {
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "verbatimModuleSyntax": false,
+    "module": "ESNext"
+  },
+  "include": [
+    "src/**/__tests__/**/*.tsx",
+    "src/**/__tests__/**/*.ts",
+    "src/setupTests.ts"
+  ]
+}

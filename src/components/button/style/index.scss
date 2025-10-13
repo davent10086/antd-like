@@ -1,0 +1,188 @@
+@import "../../../themes/index.scss";
+
+/* Basic Button Styles */
+/* 
+ * 按钮组件基础样式
+ * 定义了按钮的基本外观、交互效果和各种变体样式
+ * 包括默认样式、主要样式、不同尺寸和禁用状态
+ */
+
+// 定义常用变量以提高可维护性
+$btn-prefix: '.ant-btn';
+
+// 基础按钮样式
+#{$btn-prefix} {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  border: 1px solid transparent;
+  transition: all $animation-duration-base $ease-in-out;
+  user-select: none;
+  touch-action: manipulation;
+  height: 32px;
+  padding: 4px 15px;
+  font-size: $font-size-base;
+  border-radius: $border-radius-base;
+  cursor: pointer;
+  
+  // 添加焦点样式以改善可访问性
+  &:focus {
+    outline: 2px solid $primary-color;
+    outline-offset: 1px;
+  }
+
+  /* 鼠标悬停时的透明度变化效果 */
+  &:hover:not(&-disabled):not(&-loading) {
+    opacity: 0.8;
+  }
+
+  /* 默认样式按钮 */
+  &#{$btn-prefix}-default {
+    background-color: $background-color-light;
+    border-color: $border-color;
+    color: $text-color;
+
+    &:hover:not(&-disabled):not(&-loading) {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+    
+    &:focus {
+      outline-color: $primary-color;
+    }
+  }
+
+  /* 主要样式按钮 */
+  &#{$btn-prefix}-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: $background-color-light;
+    box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+
+    &:hover:not(&-disabled):not(&-loading) {
+      background-color: $blue-5;
+      border-color: $blue-5;
+    }
+    
+    &:focus {
+      outline-color: $blue-5;
+    }
+  }
+
+  /* 虚线样式按钮 */
+  &#{$btn-prefix}-dashed {
+    background-color: $background-color-light;
+    border-color: $border-color;
+    color: $text-color;
+    border-style: dashed;
+
+    &:hover:not(&-disabled):not(&-loading) {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+    
+    &:focus {
+      outline-color: $primary-color;
+    }
+  }
+
+  /* 链接样式按钮 */
+  &#{$btn-prefix}-link {
+    background-color: transparent;
+    border-color: transparent;
+    color: $primary-color;
+    box-shadow: none;
+    padding: 4px 0;
+
+    &:hover:not(&-disabled):not(&-loading) {
+      background-color: transparent;
+      border-color: transparent;
+      color: $blue-5;
+    }
+    
+    &:focus {
+      outline-color: $blue-5;
+    }
+  }
+
+  /* 文本样式按钮 */
+  &#{$btn-prefix}-text {
+    background-color: transparent;
+    border-color: transparent;
+    color: $text-color;
+    box-shadow: none;
+    padding: 4px 0;
+
+    &:hover:not(&-disabled):not(&-loading) {
+      background-color: $item-hover-bg;
+      border-color: transparent;
+      color: $text-color;
+    }
+    
+    &:focus {
+      outline-color: $text-color;
+    }
+  }
+
+  /* 大尺寸按钮 */
+  &#{$btn-prefix}-large {
+    height: 40px;
+    padding: 6.4px 15px;
+    font-size: $font-size-lg;
+    border-radius: $border-radius-base + 2;
+  }
+
+  /* 小尺寸按钮 */
+  &#{$btn-prefix}-small {
+    height: 24px;
+    padding: 0px 7px;
+    font-size: $font-size-sm;
+    border-radius: $border-radius-sm;
+  }
+
+  /* 幽灵按钮 */
+  &#{$btn-prefix}-ghost {
+    background-color: transparent;
+
+    &#{$btn-prefix}-default {
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    &#{$btn-prefix}-primary {
+      color: #1677ff;
+      border-color: #1677ff;
+      background-color: transparent;
+    }
+  }
+
+  /* 块级按钮 */
+  &#{$btn-prefix}-block {
+    display: block;
+    width: 100%;
+  }
+
+  /* 加载状态按钮 */
+  &#{$btn-prefix}-loading {
+    cursor: default;
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
+  /* 禁用状态按钮 */
+  &#{$btn-prefix}-disabled {
+    color: $disabled-color;
+    background-color: $background-color;
+    border-color: $border-color;
+    cursor: not-allowed;
+    
+    &:hover {
+      color: $disabled-color;
+      background-color: $background-color;
+      border-color: $border-color;
+    }
+  }
+}

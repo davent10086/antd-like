@@ -1,0 +1,94 @@
+// 基础样式重置和通用样式
+// 参考 Ant Design 的基础样式
+
+// 设置全局盒模型为border-box，统一页面元素的盒模型计算方式
+html {
+  box-sizing: border-box;
+}
+
+// 使所有元素及其伪元素继承html设置的border-box盒模型
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+// 重置body默认样式并设置基础字体、颜色和背景
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+// 链接样式
+a {
+  color: $primary-color;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  transition: color $animation-duration-base;
+  
+  &:hover {
+    color: $primary-color;
+    opacity: 0.8;
+  }
+  
+  &:active {
+    color: $primary-color;
+  }
+  
+  &:focus {
+    outline: 2px solid $primary-color;
+    outline-offset: 1px;
+  }
+  
+  &:active,
+  &:hover {
+    outline: 0;
+    text-decoration: none;
+  }
+  
+  &[disabled] {
+    color: $disabled-color;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// 设置图片为响应式，保持宽高比并垂直居中
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+// 重置表格样式，设置边框合并并显示空单元格
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+}
+
+// 统一各浏览器下的placeholder样式
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: $text-color-secondary;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: $text-color-secondary;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: $text-color-secondary;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: $text-color-secondary;
+}

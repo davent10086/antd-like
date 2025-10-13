@@ -1,0 +1,14 @@
+// 主题系统入口文件
+// 整合所有主题变量和样式
+
+// 导入默认主题变量
+@import "./default/variables.scss";
+
+// 导入混入函数
+@import "./mixins/mixins.scss";
+
+// 导入核心样式
+@import "./core/base.scss";
+
+// 可通过引入不同主题文件切换主题
+// 例如引入暗色主题: @import "./dark/variables.scss";

@@ -1,0 +1,254 @@
+/* Form Styles */
+/* 
+ * 表单组件样式
+ * 定义了表单和表单项的基本外观和布局
+ */
+
+$font-size-base: 14px;
+$text-color: rgba(0, 0, 0, 0.88);
+$text-color-secondary: rgba(0, 0, 0, 0.45);
+$border-color: #d9d9d9;
+$error-color: #ff4d4f;
+$control-height: 32px;
+$control-padding-horizontal: 11px;
+$control-padding-horizontal-sm: 7px;
+$line-height: 1.5;
+$border-radius: 6px;
+$form-item-margin-bottom: 24px;
+
+/// 表单容器样式类
+/// 包含水平、垂直和行内三种布局模式的样式定义
+.ant-form {
+  // 基础布局
+  &-horizontal {
+    // 水平布局样式
+    .ant-form-item {
+      flex-direction: row;
+    }
+    
+    .ant-form-item-label {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-grow: 0;
+      flex-shrink: 0;
+      padding-right: 8px;
+    }
+    
+    .ant-form-item-wrapper {
+      flex: 1;
+    }
+  }
+  
+  /// 水平布局表单样式
+  /// 标签和控件在同一行显示
+  &-horizontal {
+    // 水平布局样式
+    .ant-form-item {
+      flex-direction: row;
+    }
+    
+    .ant-form-item-label {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-grow: 0;
+      flex-shrink: 0;
+      padding-right: 8px;
+    }
+    
+    .ant-form-item-wrapper {
+      flex: 1;
+    }
+  }
+  
+  /// 垂直布局表单样式
+  /// 标签在控件上方显示
+  &-vertical {
+    // 垂直布局样式
+    .ant-form-item-label {
+      padding-bottom: 8px;
+    }
+  }
+  
+  /// 行内布局表单样式
+  /// 表单项横向排列，适用于简单表单
+  &-inline {
+    // 行内布局样式
+    display: flex;
+    flex-wrap: wrap;
+    
+    .ant-form-item {
+      margin-right: 16px;
+      margin-bottom: 0;
+    }
+  }
+  
+  // 表单项
+  &-item {
+    margin-bottom: $form-item-margin-bottom;
+    
+    /// 表单项标签样式
+    /// 控制标签文本、对齐方式及必填标识的显示
+    &-label {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-weight: normal;
+      text-align: left;
+      line-height: $line-height;
+      color: $text-color;
+      
+      /// 左对齐标签样式
+      &-left {
+        text-align: left;
+      }
+      
+      /// 右对齐标签样式
+      &-right {
+        text-align: right;
+      }
+      
+      > label {
+        color: $text-color;
+        
+        /// 必填项标识样式
+        /// 在必填标签后添加红色星号
+        &.required {
+          &::after {
+            content: "*";
+            color: $error-color;
+            margin-left: 4px;
+          }
+        }
+        
+        &::after {
+          content: ":";
+          margin: 0 8px 0 2px;
+        }
+        
+        .ant-form-hide-required-mark & {
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+    
+    /// 表单项包装器样式
+    /// 用于包裹表单控件，提供统一的样式控制接口
+    &-wrapper {
+      // 表单项包装器
+      // 用于包裹表单控件，提供统一的样式控制接口
+      flex: 1;
+      min-width: 0;
+    }
+    
+    /// 表单项控制器样式
+    /// 包含实际表单控件及相关状态指示元素
+    &-control {
+      line-height: $line-height;
+      position: relative;
+    }
+    
+    /// 表单项说明文字样式
+    /// 显示表单控件的额外说明信息
+    &-explain {
+      min-height: 24px;
+      line-height: $line-height;
+      color: $text-color-secondary;
+      font-size: $font-size-base;
+    }
+    
+    /// 表单项额外信息样式
+    /// 显示表单控件的附加信息
+    &-extra {
+      color: $text-color-secondary;
+      font-size: $font-size-base;
+      line-height: $line-height;
+      margin-top: 2px;
+    }
+    
+    /// 表单项错误状态样式
+    /// 当表单验证失败时应用的样式
+    &-has-error {
+      .ant-form-item-label > label {
+        color: $error-color;
+      }
+      
+      .ant-form-item-control {
+        input,
+        textarea,
+        .ant-select-selector {
+          border-color: $error-color;
+        }
+      }
+      
+      .ant-form-item-explain {
+        color: $error-color;
+      }
+    }
+    
+    /// 表单项验证中状态样式
+    /// 当表单正在验证时应用的样式
+    &-is-validating {
+      .ant-form-item-control {
+        input,
+        textarea,
+        .ant-select-selector {
+          border-color: #1677ff;
+        }
+      }
+    }
+  }
+  
+  // 表单控件通用样式
+  input,
+  textarea,
+  .ant-select-selector {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    padding: 4px 11px;
+    font-size: $font-size-base;
+    line-height: $line-height;
+    transition: all 0.3s;
+    
+    &:focus {
+      border-color: #4096ff;
+      box-shadow: 0 0 0 2px rgba(5, 145, 255, 0.1);
+      outline: 0;
+    }
+    
+    &:disabled {
+      background-color: rgba(0, 0, 0, 0.04);
+      cursor: not-allowed;
+      opacity: 1;
+    }
+  }
+  
+  textarea {
+    padding: 4px 11px;
+  }
+  
+  // 隐藏必填标记
+  &-hide-required-mark {
+    .ant-form-item-label > label {
+      &.required {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+  
+  /// 隐藏必填标记样式类
+  /// 当需要隐藏必填项星号时应用的样式
+  &-hide-required-mark {
+    .ant-form-item-label > label {
+      &.required {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}

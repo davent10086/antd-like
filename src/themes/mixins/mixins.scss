@@ -1,0 +1,75 @@
+// 主题混入函数
+// 提供通用的样式混入方法
+
+// 清除浮动
+// 通过伪元素清除容器内浮动元素的影响
+@mixin clearfix() {
+  &::before,
+  &::after {
+    display: table;
+    content: '';
+  }
+  
+  &::after {
+    clear: both;
+  }
+}
+
+// 单行文本省略号
+// 对单行文本添加省略号显示效果
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 多行文本省略号
+// 对多行文本添加省略号显示效果
+// @param {Number} $lines - 显示的行数，默认为2行
+@mixin multiline-ellipsis($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+// 文本隐藏
+// 隐藏元素中的文本内容
+@mixin text-hide() {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+// 高分辨率屏幕适配
+// 为不同分辨率的屏幕提供对应的背景图片
+// @param {String} $url - 图片路径（不含扩展名）
+// @param {String} $type - 图片格式，默认为'png'
+@mixin retina-bg-img($url, $type: 'png') {
+  background-image: url($url + '.' + $type);
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    background-image: url($url + '@2x.' + $type);
+  }
+  @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+    background-image: url($url + '@3x.' + $type);
+  }
+}
+
+// 动画混入
+// 设置动画的基本属性
+// @param {Time} $duration - 动画持续时间，默认使用$animation-duration-base变量值
+@mixin motion-common($duration: $animation-duration-base) {
+  animation-duration: $duration;
+  animation-fill-mode: both;
+}
+
+// 离开动画混入
+// 设置离开动画的基本属性
+// @param {Time} $duration - 动画持续时间，默认使用$animation-duration-base变量值
+@mixin motion-common-leave($duration: $animation-duration-base) {
+  animation-duration: $duration;
+  animation-fill-mode: both;
+}
