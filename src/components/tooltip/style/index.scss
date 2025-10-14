@@ -1,0 +1,238 @@
+@import "../../../themes/index.scss";
+
+// 定义 tooltip 组件的 CSS 类名前缀
+$tooltip-prefix: '.ant-tooltip';
+
+// Tooltip 根元素样式定义
+#{$tooltip-prefix} {
+  // 设置绝对定位，使 tooltip 可以精确控制位置
+  position: absolute;
+  // 设置较高的层级，确保 tooltip 显示在页面其他元素之上
+  z-index: 1060;
+  // 设置为块级元素显示
+  display: block;
+  // 初始状态下可见（配合 opacity 控制显示隐藏）
+  visibility: visible;
+  // 设置字体大小
+  font-size: 12px;
+  // 设置行高比例
+  line-height: 1.5;
+  // 初始透明度为 0，实现淡入淡出效果
+  opacity: 0;
+  
+  // Hidden state
+  // 隐藏状态样式，完全不显示元素
+  &-hidden {
+    display: none;
+  }
+  
+  // Placement variations
+  // 不同方向的 tooltip 样式设置，控制相应方向上的间距
+  &-placement-top {
+    padding: 5px 0;
+  }
+  
+  &-placement-topLeft,
+  &-placement-topRight {
+    padding: 5px 0;
+  }
+  
+  &-placement-right {
+    padding: 0 5px;
+  }
+  
+  &-placement-rightTop,
+  &-placement-rightBottom {
+    padding: 0 5px;
+  }
+  
+  &-placement-bottom {
+    padding: 5px 0;
+  }
+  
+  &-placement-bottomLeft,
+  &-placement-bottomRight {
+    padding: 5px 0;
+  }
+  
+  &-placement-left {
+    padding: 0 5px;
+  }
+  
+  &-placement-leftTop,
+  &-placement-leftBottom {
+    padding: 0 5px;
+  }
+  
+  // Inner content
+  // tooltip 内容区域样式
+  &-inner {
+    // 内边距设置
+    padding: 8px 10px;
+    // 文字颜色设为白色
+    color: #fff; // 白色文本保持不变
+    // 文本左对齐
+    text-align: left;
+    // 无文本装饰
+    text-decoration: none;
+    // 背景色使用主题中的灰色并设置透明度
+    background-color: rgba($gray-13, 0.75); // 使用主题变量替代硬编码黑色
+    // 圆角使用主题变量
+    border-radius: $border-radius-base; // 使用主题圆角变量
+    // 添加阴影效果增强层次感
+    box-shadow: 0 2px 8px rgba($gray-13, 0.15); // 使用主题变量
+    // 设置最小高度保证可读性
+    min-height: 32px;
+  }
+  
+  // Arrow
+  // tooltip 箭头样式
+  &-arrow {
+    // 绝对定位便于精确定位
+    position: absolute;
+    // 宽高设为0，通过 border 实现三角形
+    width: 0;
+    height: 0;
+    // 边框颜色透明
+    border-color: transparent;
+    // 边框样式为实线
+    border-style: solid;
+  }
+  
+  // Arrow placements
+  // 不同方向的箭头定位和样式
+  &-placement-top &-arrow,
+  &-placement-topLeft &-arrow,
+  &-placement-topRight &-arrow {
+    // 顶部显示的箭头定位到底部
+    bottom: 0;
+    // 水平居中
+    left: 50%;
+    // 微调水平位置
+    margin-left: -5px;
+    // 设置边框宽度形成向上的三角形
+    border-width: 5px 5px 0;
+    // 上边框颜色与 tooltip 背景色一致
+    border-top-color: rgba($gray-13, 0.75); // 使用主题变量
+  }
+  
+  &-placement-topLeft &-arrow {
+    // 左上角箭头调整左边距
+    left: 16px;
+  }
+  
+  &-placement-topRight &-arrow {
+    // 右上角箭头调整右边距
+    right: 16px;
+    left: auto;
+  }
+  
+  &-placement-right &-arrow,
+  &-placement-rightTop &-arrow,
+  &-placement-rightBottom &-arrow {
+    // 右侧箭头定位到左侧
+    left: 0;
+    // 垂直居中
+    top: 50%;
+    // 微调垂直位置
+    margin-top: -5px;
+    // 设置边框宽度形成向左的三角形
+    border-width: 5px 5px 5px 0;
+    // 右边框颜色与 tooltip 背景色一致
+    border-right-color: rgba($gray-13, 0.75); // 使用主题变量
+  }
+  
+  &-placement-rightTop &-arrow {
+    // 右上角箭头调整上边距
+    top: 8px;
+  }
+  
+  &-placement-rightBottom &-arrow {
+    // 右下角箭头调整下边距
+    bottom: 8px;
+    top: auto;
+  }
+  
+  &-placement-left &-arrow,
+  &-placement-leftTop &-arrow,
+  &-placement-leftBottom &-arrow {
+    // 左侧箭头定位到右侧
+    right: 0;
+    // 垂直居中
+    top: 50%;
+    // 微调垂直位置
+    margin-top: -5px;
+    // 设置边框宽度形成向右的三角形
+    border-width: 5px 0 5px 5px;
+    // 左边框颜色与 tooltip 背景色一致
+    border-left-color: rgba($gray-13, 0.75); // 使用主题变量
+  }
+  
+  &-placement-leftTop &-arrow {
+    // 左上角箭头调整上边距
+    top: 8px;
+  }
+  
+  &-placement-leftBottom &-arrow {
+    // 左下角箭头调整下边距
+    bottom: 8px;
+    top: auto;
+  }
+  
+  &-placement-bottom &-arrow,
+  &-placement-bottomLeft &-arrow,
+  &-placement-bottomRight &-arrow {
+    // 底部箭头定位到顶部
+    top: 0;
+    // 水平居中
+    left: 50%;
+    // 微调水平位置
+    margin-left: -5px;
+    // 设置边框宽度形成向下的三角形
+    border-width: 0 5px 5px;
+    // 下边框颜色与 tooltip 背景色一致
+    border-bottom-color: rgba($gray-13, 0.75); // 使用主题变量
+  }
+  
+  &-placement-bottomLeft &-arrow {
+    // 左下角箭头调整左边距
+    left: 16px;
+  }
+  
+  &-placement-bottomRight &-arrow {
+    // 右下角箭头调整右边距
+    right: 16px;
+    left: auto;
+  }
+  
+  // Color variations
+  // 不同颜色主题的 tooltip 样式
+  &-pink &-inner {
+    // 粉色主题的内容背景色
+    background-color: $red-6; // 使用主题错误色变量替代硬编码粉色
+  }
+  
+  &-pink &-arrow {
+    // 粉色主题的箭头颜色
+    border-top-color: $red-6; // 使用主题变量
+    
+    // 不同方向的粉色箭头颜色设置
+    &#{$tooltip-prefix}-placement-right {
+      border-right-color: $red-6;
+    }
+    
+    &#{$tooltip-prefix}-placement-left {
+      border-left-color: $red-6;
+    }
+    
+    &#{$tooltip-prefix}-placement-bottom {
+      border-bottom-color: $red-6;
+    }
+  }
+  
+  // Open state
+  // 显示状态，透明度设为1完全显示
+  &-open {
+    opacity: 1;
+  }
+}

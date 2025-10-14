@@ -29,7 +29,7 @@
 
 ```bash
 # 克隆项目
-git clone <repository-url>
+git clone https://github.com/davent10086/antd-like
 cd my-app
 
 # 安装依赖
@@ -71,6 +71,7 @@ npm run lint
 |---------|------|------|
 | [Button](./src/components/button) | ✅ 已完成 | 支持多种类型、尺寸和状态的按钮组件 |
 | [Form](./src/components/form) | ✅ 已完成 | 支持表单控件、数据管理、验证和重置功能的表单组件 |
+| [Tooltip](./src/components/tooltip) | ✅ 已完成 | 支持多种触发方式和位置的提示组件 |
 
 ### 待开发组件
 
@@ -88,7 +89,6 @@ npm run lint
 - [Notification](./src/components/notification)
 - [Table](./src/components/table)
 - [Tabs](./src/components/tabs)
-- [Tooltip](./src/components/tooltip)
 
 ### Button 组件详情
 
@@ -118,6 +118,19 @@ Form 组件是第二个已完成的组件，它具有以下特性：
 - 支持嵌套字段结构
 - 支持动态增减表单项
 - 实现性能优化，避免不必要的重渲染
+
+### Tooltip 组件详情
+
+Tooltip 组件是第三个已完成的组件，它具有以下特性：
+
+- 多种触发方式：`hover`、`click`、`focus`
+- 多种位置支持：`top`、`bottom`、`left`、`right`
+- 受控与非受控模式支持
+- 延迟显示与隐藏功能
+- 支持标题和描述内容
+- 手动控制显示隐藏
+- 完整的 TypeScript 类型定义
+- 支持自定义样式和类名
 
 ## ESLint 配置扩展
 

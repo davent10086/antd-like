@@ -7,7 +7,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "verbatimModuleSyntax": false,
-    "module": "ESNext"
+    "module": "ESNext",
+    "lib": ["ES2023", "DOM"]
   },
   "include": [
     "src/**/__tests__/**/*.tsx",
