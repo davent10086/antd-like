@@ -1,0 +1,272 @@
+@import "../../../themes/index.scss";
+
+/* Basic Card Styles */
+/*
+ * 卡片组件基础样式
+ * 定义了卡片的基本外观、布局和各种变体样式
+ */
+
+// 定义常用变量以提高可维护性
+$card-prefix: '.ant-card';
+
+#{$card-prefix} {
+  // 卡片基础样式设置
+  position: relative;
+  background: $background-color-light;
+  border-radius: $border-radius-base;
+  box-shadow: $shadow-1-down;
+  transition: box-shadow $animation-duration-base $ease-in-out;
+  overflow: hidden;
+  
+  // 带边框的卡片样式
+  &-bordered {
+    border: 1px solid $border-color;
+  }
+
+  // 可悬停的卡片样式
+  &-hoverable {
+    cursor: pointer;
+    
+    &:hover {
+      box-shadow: $shadow-2;
+    }
+  }
+
+  // 包含网格的卡片，body无内边距
+  &-contain-grid &-body {
+    padding: 0;
+  }
+
+  // 包含标签页的卡片，头部有左右内边距
+  &-contain-tabs > &-head {
+    padding: 0 $space-md;
+    min-height: $space-unit * 5;
+  }
+
+  /*
+   * 卡片头部样式
+   * 包括标题区域的基本样式设置
+   */
+  &-head {
+    padding: 0 $space-lg;
+    border-bottom: 1px solid $border-color-split;
+    border-radius: $border-radius-base $border-radius-base 0 0;
+    background: $background-color-light;
+    color: $heading-color;
+    font-size: $font-size-lg;
+    font-weight: 500;
+    line-height: $space-unit * 3;
+    min-height: $space-unit * 3;
+    margin-bottom: -1px;
+
+    /*
+     * 头部包装器，用于标题和额外内容的布局
+     * 使用flex布局实现两端对齐
+     */
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /*
+     * 头部标题样式
+     * 设置文本溢出省略效果
+     */
+    &-title {
+      flex: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    /*
+     * 头部额外内容样式
+     * 位于标题右侧，使用较小字号
+     */
+    &-extra {
+      float: right;
+      margin-left: $space-md;
+      font-weight: normal;
+      font-size: $font-size-base;
+      color: $text-color;
+    }
+  }
+
+  /*
+   * 卡片主体内容样式
+   * 设置内容区域的内边距、字体大小和行高
+   */
+  &-body {
+    padding: $space-lg;
+    font-size: $font-size-base;
+    color: $text-color;
+    line-height: 1.5;
+    background: $background-color-light;
+  }
+
+  /*
+   * 卡片操作区域样式
+   * 底部操作按钮区域，使用flex布局平均分配空间
+   */
+  &-actions {
+    display: flex;
+    border-top: 1px solid $border-color-split;
+    background: $background-color-light;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      flex: 1;
+      text-align: center;
+      margin: $space-sm 0;
+      color: $text-color-secondary;
+      
+      // 操作项之间的分割线
+      &:not(:last-child) {
+        border-right: 1px solid $border-color-split;
+      }
+    }
+  }
+
+  /*
+   * 卡片封面样式
+   * 确保图片适应容器宽度
+   */
+  &-cover {
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  /*
+   * 卡片加载状态样式
+   * 隐藏超出边界的内容
+   */
+  &-loading {
+    overflow: hidden;
+  }
+
+  // 卡片加载时主体内容不可选中
+  &-loading &-body {
+    user-select: none;
+  }
+
+  /*
+   * 小尺寸卡片样式
+   * 调整头部和主体的内边距及最小高度
+   */
+  &-small {
+    > #{$card-prefix}-head {
+      padding: 0 $space-md;
+      min-height: $space-unit * 3;
+      font-size: $font-size-base;
+      
+      > #{$card-prefix}-head-wrapper {
+        line-height: $space-unit * 3;
+        min-height: $space-unit * 3;
+      }
+    }
+    
+    > #{$card-prefix}-body {
+      padding: $space-md;
+    }
+  }
+
+  /*
+   * 卡片元信息样式（通常包含头像、标题和描述）
+   * 使用flex布局组织头像和详细信息
+   */
+  &-meta {
+    display: flex;
+    margin: -$space-sm 0 -$space-sm -$space-sm;
+    
+    /*
+     * 元信息头像区域
+     * 设置头像的间距
+     */
+    &-avatar {
+      padding: $space-sm 0 $space-sm $space-sm;
+    }
+    
+    /*
+     * 元信息详情区域
+     * 弹性填充剩余空间
+     */
+    &-detail {
+      flex: 1;
+      overflow: hidden;
+      padding: $space-sm;
+    }
+    
+    /*
+     * 元信息标题样式
+     * 设置标题的溢出省略效果
+     */
+    &-title {
+      margin-bottom: $space-xs;
+      font-size: $font-size-lg;
+      font-weight: 500;
+      color: $heading-color;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    
+    /*
+     * 元信息描述样式
+     * 使用次要文字颜色
+     */
+    &-description {
+      color: $text-color-secondary;
+      font-size: $font-size-base;
+    }
+  }
+
+  /*
+   * 卡片网格布局样式
+   * 创建三列等宽网格布局
+   */
+  &-grid {
+    width: 33.33%;
+    float: left;
+    padding: $space-lg;
+    border: 0;
+    border-radius: 0;
+    box-shadow: 1px 0 0 0 $border-color-split,
+                0 1px 0 0 $border-color-split,
+                1px 1px 0 0 $border-color-split,
+                1px 0 0 0 $border-color-split inset,
+                0 1px 0 0 $border-color-split inset;
+    transition: all $animation-duration-base;
+
+    /*
+     * 网格项悬停效果
+     * 提升层级并增加阴影
+     */
+    &:hover {
+      position: relative;
+      z-index: 1;
+      box-shadow: $shadow-2;
+    }
+  }
+
+  /*
+   * 内嵌卡片样式
+   * 移除边框和圆角以适应嵌套场景
+   */
+  &-inner {
+    border: 0;
+    border-radius: 0;
+    
+    /*
+     * 内嵌带边框卡片样式
+     * 仅为顶部添加边框
+     */
+    &-bordered {
+      border-top: 1px solid $border-color;
+    }
+  }
+}

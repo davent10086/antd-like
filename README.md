@@ -1,6 +1,6 @@
-# My React Component Library
+# antd-like 组件库
 
-基于 React、TypeScript 和 Vite 构建的现代化组件库模板。该模板提供了最小化的设置，让 React 在 Vite 中运行并支持热模块替换（HMR）和 ESLint 规则。
+基于 React、TypeScript 和 Vite 构建的现代化组件库。该库旨在提供类似 Ant Design 的组件集合，采用现代化的工具链，支持热模块替换（HMR）和代码检查。
 
 ## 目录
 
@@ -13,7 +13,7 @@
 
 ## 项目概述
 
-这是一个使用最新技术栈构建的 React 组件库开发模板，旨在帮助开发者快速启动组件库项目。项目采用现代化的工具链，具有快速的开发服务器启动速度和热更新功能。
+这是一个类似 Ant Design 风格的 React 组件库，旨在为开发者提供高质量的 UI 组件。项目采用现代化的技术栈，具有快速的开发体验和良好的性能优化。
 
 ## 技术栈
 
@@ -30,7 +30,7 @@
 ```bash
 # 克隆项目
 git clone https://github.com/davent10086/antd-like
-cd my-app
+cd antd-like
 
 # 安装依赖
 npm install
@@ -72,17 +72,17 @@ npm run lint
 | [Button](./src/components/button) | ✅ 已完成 | 支持多种类型、尺寸和状态的按钮组件 |
 | [Form](./src/components/form) | ✅ 已完成 | 支持表单控件、数据管理、验证和重置功能的表单组件 |
 | [Tooltip](./src/components/tooltip) | ✅ 已完成 | 支持多种触发方式和位置的提示组件 |
+| [Input](./src/components/input) | ✅ 已完成 | 支持多种功能的输入框组件 |
+| [Card](./src/components/card) | ✅ 已完成 | 支持标题、操作、内容、加载状态等基本功能的卡片组件 |
 
 ### 待开发组件
 
 以下组件仅创建了目录结构，尚未实现具体功能：
 
-- [Card](./src/components/card)
 - [DatePicker](./src/components/date-picker)
 - [Dropdown](./src/components/dropdown)
 - [Grid](./src/components/grid)
 - [Icon](./src/components/icon)
-- [Input](./src/components/input)
 - [Layout](./src/components/layout)
 - [Menu](./src/components/menu)
 - [Modal](./src/components/modal)
@@ -92,36 +92,33 @@ npm run lint
 
 ### Button 组件详情
 
-Button 组件是目前唯一一个已完成的组件，它具有以下特性：
+Button 组件是一个功能完整的按钮组件，具有以下特性：
 
 - 多种类型：`primary`、`default`、`dashed`、`link`、`text`
 - 三种尺寸：`large`、`middle`、`small`
 - 禁用状态 (`disabled`)
 - 加载状态 (`loading`)
-- 幽灵按钮 (`ghosty`)
+- 幽灵按钮 (`ghost`)
 - 块级元素按钮 (`block`)
 - 图标支持 (`icon`)
 - 链接按钮支持 (`href`)
 - 支持原生 button 属性 (`htmlType`)
-- 完整的 TypeScript 类型定义
-- 支持所有 HTML button 元素的原生属性
 
 ### Form 组件详情
 
-Form 组件是第二个已完成的组件，它具有以下特性：
+Form 组件是一个完整的表单解决方案，具有以下特性：
 
 - 表单控件管理（Form、FormItem等）
 - 表单数据管理（获取、设置、重置字段值）
 - 表单验证机制
 - 初始值支持
-- 完整的 TypeScript 类型定义
 - 支持嵌套字段结构
 - 支持动态增减表单项
-- 实现性能优化，避免不必要的重渲染
+- 性能优化，避免不必要的重渲染
 
 ### Tooltip 组件详情
 
-Tooltip 组件是第三个已完成的组件，它具有以下特性：
+Tooltip 组件是一个灵活的提示组件，具有以下特性：
 
 - 多种触发方式：`hover`、`click`、`focus`
 - 多种位置支持：`top`、`bottom`、`left`、`right`
@@ -129,8 +126,32 @@ Tooltip 组件是第三个已完成的组件，它具有以下特性：
 - 延迟显示与隐藏功能
 - 支持标题和描述内容
 - 手动控制显示隐藏
-- 完整的 TypeScript 类型定义
 - 支持自定义样式和类名
+
+### Input 组件详情
+
+Input 组件是一个功能丰富的输入框组件，具有以下特性：
+
+- 受控和非受控模式支持
+- 多种输入类型（text, password 等）
+- 前缀和后缀支持
+- 清除按钮
+- 字数统计
+- 禁用和只读状态
+
+### Card 组件详情
+
+Card 组件是一个内容容器组件，具有以下特性：
+
+- 标题和副标题支持
+- 自定义操作区域
+- 可选边框和悬停效果
+- 加载状态展示
+- 封面图片支持
+- 底部操作区域
+- 多种尺寸（默认和小尺寸）
+- 卡片嵌套支持
+- 元信息展示（头像、标题、描述）
 
 ## ESLint 配置扩展
 
