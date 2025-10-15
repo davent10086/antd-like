@@ -13,6 +13,7 @@
   "include": [
     "src/**/__tests__/**/*.tsx",
     "src/**/__tests__/**/*.ts",
-    "src/setupTests.ts"
+    "src/setupTests.ts",
+    "src/**/__test__/**/*.d.ts"
   ]
 }

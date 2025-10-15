@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ButtonDemo from './components/button/demo/basic';
-import './components/button/style/index.scss';
+import BasicFormDemo from './components/form/demo/basic';
+import './components/form/style/index.scss';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ButtonDemo />
+    <BasicFormDemo />
   </React.StrictMode>,
 );

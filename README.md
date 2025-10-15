@@ -1,6 +1,6 @@
-# antd-like 组件库
+# My React Component Library
 
-基于 React、TypeScript 和 Vite 构建的现代化组件库。该库旨在提供类似 Ant Design 的组件集合，采用现代化的工具链，支持热模块替换（HMR）和代码检查。
+基于 React、TypeScript 和 Vite 构建的现代化组件库模板。该模板提供了最小化的设置，让 React 在 Vite 中运行并支持热模块替换（HMR）和 ESLint 规则。
 
 ## 目录
 
@@ -13,7 +13,7 @@
 
 ## 项目概述
 
-这是一个类似 Ant Design 风格的 React 组件库，旨在为开发者提供高质量的 UI 组件。项目采用现代化的技术栈，具有快速的开发体验和良好的性能优化。
+这是一个使用最新技术栈构建的 React 组件库开发模板，旨在帮助开发者快速启动组件库项目。项目采用现代化的工具链，具有快速的开发服务器启动速度和热更新功能。
 
 ## 技术栈
 
@@ -29,8 +29,8 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/davent10086/antd-like
-cd antd-like
+git clone <repository-url>
+cd my-app
 
 # 安装依赖
 npm install
@@ -49,99 +49,130 @@ npm test
 ### 构建
 
 ```bash
-# 构建生产版本
+# 构建生产版本（应用）
 npm run build
 
 # 预览构建结果
 npm run preview
-```
 
-### 代码检查
+# 构建组件库（打包发布版本）
+npm run build:lib
 
-```bash
-# 运行 ESLint 检查
-npm run lint
+# 清理构建产物
+npm run clean
+
+# 构建并查看包大小分析报告
+npm run build:analyze
 ```
 
 ## 组件库开发进度
 
 ### 已完成组件
 
-| 组件名称 | 状态 | 描述 |
-|---------|------|------|
-| [Button](./src/components/button) | ✅ 已完成 | 支持多种类型、尺寸和状态的按钮组件 |
-| [Form](./src/components/form) | ✅ 已完成 | 支持表单控件、数据管理、验证和重置功能的表单组件 |
-| [Tooltip](./src/components/tooltip) | ✅ 已完成 | 支持多种触发方式和位置的提示组件 |
-| [Input](./src/components/input) | ✅ 已完成 | 支持多种功能的输入框组件 |
-| [Card](./src/components/card) | ✅ 已完成 | 支持标题、操作、内容、加载状态等基本功能的卡片组件 |
+- [x] Button 按钮组件
+- [x] Form 表单组件
+- [x] Icon 图标组件
+- [x] Card 卡片组件
+- [x] DatePicker 日期选择器组件
+- [x] Input 输入框组件
+- [x] Tooltip 文字提示组件
 
 ### 待开发组件
 
-以下组件仅创建了目录结构，尚未实现具体功能：
+以下组件尚未实现，但已在目录结构中预留位置：
 
-- [DatePicker](./src/components/date-picker)
-- [Dropdown](./src/components/dropdown)
-- [Grid](./src/components/grid)
-- [Icon](./src/components/icon)
-- [Layout](./src/components/layout)
-- [Menu](./src/components/menu)
-- [Modal](./src/components/modal)
-- [Notification](./src/components/notification)
-- [Table](./src/components/table)
-- [Tabs](./src/components/tabs)
+- Alert 警告提示
+- AutoComplete 自动完成
+- Avatar 头像
+- BackTop 回到顶部
+- Badge 徽标数
+- Breadcrumb 面包屑
+- Cascader 级联选择
+- Checkbox 多选框
+- Collapse 折叠面板
+- Comment 评论
+- Descriptions 描述列表
+- Divider 分割线
+- Drawer 抽屉
+- Dropdown 下拉菜单
+- Empty 空状态
+- Grid 栅格
+- Image 图片
+- Layout 布局
+- List 列表
+- Mentions 提及
+- Menu 导航菜单
+- Message 全局提示
+- Modal 对话框
+- Notification 通知提醒框
+- PageHeader 页头
+- Pagination 分页
+- Popconfirm 气泡确认框
+- Popover 气泡卡片
+- Progress 进度条
+- Radio 单选框
+- Rate 评分
+- Result 结果
+- Select 选择器
+- Skeleton 骨架屏
+- Slider 滑动输入条
+- Space 间距
+- Spin 加载中
+- Steps 步骤条
+- Switch 开关
+- Table 表格
+- Tabs 标签页
+- Tag 标签
+- TimePicker 时间选择框
+- Timeline 时间轴
+- Transfer 穿梭框
+- Tree 树形控件
+- TreeSelect 树选择
+- Upload 上传
 
-### Button 组件详情
+## Icon 组件详情
 
-Button 组件是一个功能完整的按钮组件，具有以下特性：
+Icon 组件是一套完整的图标解决方案，具有以下特性：
 
-- 多种类型：`primary`、`default`、`dashed`、`link`、`text`
-- 三种尺寸：`large`、`middle`、`small`
-- 禁用状态 (`disabled`)
-- 加载状态 (`loading`)
-- 幽灵按钮 (`ghost`)
-- 块级元素按钮 (`block`)
-- 图标支持 (`icon`)
-- 链接按钮支持 (`href`)
-- 支持原生 button 属性 (`htmlType`)
+- 提供多套不同风格的图标（线框、实色）
+- 支持自定义尺寸和颜色
+- 支持旋转和动画效果
+- 按需加载，支持 Tree Shaking
+- 完整的 TypeScript 类型支持
 
-### Form 组件详情
+### 使用方法
 
-Form 组件是一个完整的表单解决方案，具有以下特性：
+```tsx
+import { CheckOutlined, StarFilled, SettingOutlined } from './components/icon';
 
-- 表单控件管理（Form、FormItem等）
-- 表单数据管理（获取、设置、重置字段值）
-- 表单验证机制
-- 初始值支持
-- 支持嵌套字段结构
-- 支持动态增减表单项
-- 性能优化，避免不必要的重渲染
+// 基本使用
+<CheckOutlined />
 
-### Tooltip 组件详情
+// 自定义尺寸和颜色
+<StarFilled style={{ fontSize: '24px', color: '#ffcc00' }} />
 
-Tooltip 组件是一个灵活的提示组件，具有以下特性：
+// 旋转
+<SettingOutlined rotate={90} />
 
-- 多种触发方式：`hover`、`click`、`focus`
-- 多种位置支持：`top`、`bottom`、`left`、`right`
-- 受控与非受控模式支持
-- 延迟显示与隐藏功能
-- 支持标题和描述内容
-- 手动控制显示隐藏
-- 支持自定义样式和类名
+// 旋转动画
+<LoadingOutlined spin />
+```
 
-### Input 组件详情
+### 支持的图标
 
-Input 组件是一个功能丰富的输入框组件，具有以下特性：
+- ArrowOutlined - 箭头图标
+- CheckOutlined - 勾选图标
+- CloseOutlined - 关闭图标
+- HeartFilled - 心形图标（实心）
+- LoadingOutlined - 加载图标
+- SearchOutlined - 搜索图标
+- SettingOutlined - 设置图标
+- StarFilled - 星形图标（实心）
+- UserOutlined - 用户图标
 
-- 受控和非受控模式支持
-- 多种输入类型（text, password 等）
-- 前缀和后缀支持
-- 清除按钮
-- 字数统计
-- 禁用和只读状态
+## Card 组件详情
 
-### Card 组件详情
-
-Card 组件是一个内容容器组件，具有以下特性：
+Card 组件用于展示信息块，具有以下特性：
 
 - 标题和副标题支持
 - 自定义操作区域
@@ -152,6 +183,26 @@ Card 组件是一个内容容器组件，具有以下特性：
 - 多种尺寸（默认和小尺寸）
 - 卡片嵌套支持
 - 元信息展示（头像、标题、描述）
+
+### DatePicker 组件详情
+
+DatePicker 组件是一个日期选择组件，具有以下特性：
+
+- 基础日期选择功能
+- 时间选择功能（通过 showTime 属性启用）
+- 受控与非受控模式支持
+- 禁用状态（disabled）和只读状态（readonly）
+- 多种尺寸（large, middle, small）
+- 自定义日期格式（format 属性）
+- 占位符文本（placeholder 属性）
+- 清除已选日期（allowClear 属性）
+- 显示"今天"按钮（showToday 属性）
+- 自定义后缀图标（suffixIcon 属性）
+- 边框显示控制（bordered 属性）
+- 自定义面板类名（dropdownClassName 属性）和样式（popupStyle 属性）
+- 自动获取焦点（autoFocus 属性）
+- 面板展开状态控制（open 属性）和状态变化回调（onOpenChange 属性）
+- 自定义页脚渲染（renderExtraFooter 属性）
 
 ## ESLint 配置扩展
 
