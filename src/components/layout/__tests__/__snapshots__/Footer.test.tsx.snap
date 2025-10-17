@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render correctly 1`] = `
+<footer
+  class="ant-layout-footer"
+  style="height: 64px; line-height: 64px;"
+>
+  Footer
+</footer>
+`;

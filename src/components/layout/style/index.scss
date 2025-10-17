@@ -1,0 +1,176 @@
+@import "../../themes/index.scss";
+
+$layout-prefix: '.ant-layout';
+
+/*
+ * Layout组件基础样式
+ * 定义了布局容器的基本属性和子元素的各种变体样式
+ */
+#{$layout-prefix} {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  /* fix firefox can't set height smaller than content on flex item */
+  min-height: 0;
+  background: $layout-body-background;
+
+  &,
+  * {
+    box-sizing: border-box;
+  }
+
+  /*
+   * 包含侧边栏的布局样式
+   * 将主轴方向改为水平排列
+   */
+  &&-has-sider {
+    flex-direction: row;
+  }
+
+  /*
+   * 垂直布局样式
+   * 强制设置主轴方向为垂直排列
+   */
+  &-vertical {
+    flex-direction: column;
+  }
+
+  /*
+   * 头部区域样式
+   * 设置头部固定高度、背景色和内边距
+   */
+  &-header {
+    flex: 0 0 auto;
+    background: $layout-header-background;
+    padding: $layout-header-padding;
+    height: $layout-header-height;
+    line-height: $layout-header-height;
+  }
+
+  /*
+   * 内容区域样式
+   * 设置可伸缩的内容区域，最小高度为0以支持内部滚动
+   */
+  &-content {
+    flex: auto;
+    min-height: 0;
+    background: $layout-content-background;
+    padding: $layout-content-padding;
+  }
+
+  /*
+   * 底部区域样式
+   * 设置底部固定高度、背景色和内边距
+   */
+  &-footer {
+    flex: 0 0 auto;
+    background: $layout-footer-background;
+    padding: $layout-footer-padding;
+    height: $layout-footer-height;
+    line-height: $layout-footer-height;
+  }
+
+  /*
+   * 侧边栏样式
+   * 包含侧边栏及其所有子元素的样式定义
+   */
+  &-sider {
+    position: relative;
+    min-width: 0;
+    background: $layout-sider-background;
+    transition: all 0.2s;
+
+    /*
+     * 侧边栏内容区域
+     * 通过微调margin和padding解决特定浏览器渲染问题
+     */
+    &-children {
+      height: 100%;
+      margin-top: -0.1px;
+      padding-top: 0.1px;
+    }
+
+    /*
+     * 带触发器的侧边栏
+     * 添加底部内边距以容纳触发器控件
+     */
+    &-has-trigger {
+      padding-bottom: $layout-trigger-height;
+    }
+
+    /*
+     * 侧边栏触发器
+     * 固定在底部的折叠/展开控制按钮
+     */
+    &-trigger {
+      position: fixed;
+      bottom: 0;
+      text-align: center;
+      cursor: pointer;
+      height: $layout-trigger-height;
+      line-height: $layout-trigger-height;
+      background: $layout-trigger-background;
+      transition: all 0.2s;
+    }
+
+    &-trigger-default {
+      color: $layout-trigger-color;
+    }
+
+    /*
+     * 零宽度侧边栏模式
+     * 当侧边栏被收起为零宽度时的特殊样式
+     */
+    &-zero-width {
+      & > * {
+        overflow: hidden;
+      }
+
+      /*
+       * 零宽度触发器
+       * 收起状态下用于展开侧边栏的触发按钮
+       */
+      &-trigger {
+        position: absolute;
+        top: $layout-header-height;
+        right: -$layout-zero-trigger-width;
+        text-align: center;
+        cursor: pointer;
+        width: $layout-zero-trigger-width;
+        height: $layout-zero-trigger-height;
+        line-height: $layout-zero-trigger-height;
+        background: $layout-sider-background;
+        color: $layout-trigger-color;
+        transition: background 0.3s ease;
+        z-index: 1;
+
+        &:hover {
+          background: $layout-sider-background-light;
+        }
+      }
+    }
+
+    /*
+     * 收起状态的侧边栏
+     * 调整触发器宽度以适应收起状态
+     */
+    &-collapsed {
+      .ant-layout-sider-trigger {
+        width: $layout-trigger-width;
+      }
+    }
+
+    /*
+     * 浅色主题侧边栏
+     * 使用浅色背景的侧边栏样式变体
+     */
+    &-light {
+      background: $layout-sider-background-light;
+
+      .ant-layout-sider-trigger {
+        background: $layout-sider-background-light;
+        color: $layout-trigger-color-light;
+      }
+    }
+  }
+}

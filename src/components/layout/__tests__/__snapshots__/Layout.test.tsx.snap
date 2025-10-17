@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout should render correctly 1`] = `
+<div
+  class="ant-layout"
+>
+  <header
+    class="ant-layout-header"
+    style="height: 64px; line-height: 64px;"
+  >
+    Header
+  </header>
+  <main
+    class="ant-layout-content"
+  >
+    Content
+  </main>
+  <footer
+    class="ant-layout-footer"
+    style="height: 64px; line-height: 64px;"
+  >
+    Footer
+  </footer>
+</div>
+`;
+
+exports[`Layout should render correctly with sider 1`] = `
+<div
+  class="ant-layout ant-layout-has-sider"
+>
+  <aside
+    class="ant-layout-sider"
+    style="flex: 0 0 200px; max-width: 200px; min-width: 200px; width: 200px;"
+  >
+    <div
+      class="ant-layout-sider-children"
+    >
+      Sider
+    </div>
+  </aside>
+  <div
+    class="ant-layout"
+  >
+    <header
+      class="ant-layout-header"
+      style="height: 64px; line-height: 64px;"
+    >
+      Header
+    </header>
+    <main
+      class="ant-layout-content"
+    >
+      Content
+    </main>
+    <footer
+      class="ant-layout-footer"
+      style="height: 64px; line-height: 64px;"
+    >
+      Footer
+    </footer>
+  </div>
+</div>
+`;
