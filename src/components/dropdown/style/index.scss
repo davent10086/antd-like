@@ -1,0 +1,142 @@
+@use '../../themes/index' as theme;
+
+// 下拉菜单基础样式
+// 定义了下拉菜单的整体样式，包括定位、层级、最小宽度、字体、背景色、圆角和阴影等
+.ant-dropdown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  min-width: 120px;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  transform-origin: 0 0;
+
+  // 隐藏状态的下拉菜单
+  &-hidden {
+    display: none;
+  }
+
+  // 下拉菜单项容器
+  // 定义了菜单项的容器样式，包括内边距、背景色、圆角等
+  &-menu {
+    position: relative;
+    margin: 0;
+    padding: 4px 0;
+    list-style-type: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 2px;
+    outline: none;
+
+    // 下拉菜单项
+    // 定义了单个菜单项的样式，包括内边距、颜色、字体、光标样式和过渡效果
+    &-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 5px 12px;
+      color: rgba(0, 0, 0, 0.85);
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 22px;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      // 菜单项悬停状态
+      &:hover {
+        background-color: #f5f5f5;
+      }
+
+      // 禁用的菜单项
+      // 定义了禁用菜单项的样式，包括颜色和光标样式
+      &-disabled {
+        color: rgba(0, 0, 0, 0.25);
+        cursor: not-allowed;
+
+        // 禁用菜单项悬停状态，保持背景透明
+        &:hover {
+          background-color: transparent;
+        }
+      }
+
+      // 菜单项分隔线
+      // 定义了菜单项之间的分隔线样式
+      &-divider {
+        height: 1px;
+        margin: 4px 0;
+        background-color: #f0f0f0;
+        overflow: hidden;
+      }
+
+      // 菜单项图标
+      // 定义了菜单项图标的样式，包括右边距和颜色
+      &-icon {
+        margin-right: 8px;
+        color: rgba(0, 0, 0, 0.45);
+      }
+    }
+  }
+
+  // 下拉菜单动画
+  // 定义了下拉菜单进入和离开时的动画状态
+  &-slide-up-enter,
+  &-slide-up-appear {
+    transform: scale(0);
+    opacity: 0;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+    animation-play-state: paused;
+  }
+
+  &-slide-up-leave {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+    animation-play-state: paused;
+  }
+
+  &-slide-up-enter&-slide-up-enter-active,
+  &-slide-up-appear&-slide-up-appear-active {
+    animation-name: antSlideUpIn;
+    animation-play-state: running;
+  }
+
+  &-slide-up-leave&-slide-up-leave-active {
+    animation-name: antSlideUpOut;
+    animation-play-state: running;
+  }
+
+  // 下拉菜单滑入动画关键帧
+  // 定义了从下往上滑入的动画效果，从缩小状态到正常状态
+  @keyframes antSlideUpIn {
+    0% {
+      transform: scaleY(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  // 下拉菜单滑出动画关键帧
+  // 定义了从下往上滑出的动画效果，从正常状态到缩小状态
+  @keyframes antSlideUpOut {
+    0% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleY(0.8);
+      opacity: 0;
+    }
+  }
+}

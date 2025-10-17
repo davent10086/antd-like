@@ -33,7 +33,7 @@
 
 ### 克隆和安装
 
-```bash
+```
 # 克隆项目
 git clone <repository-url>
 cd antd-like
@@ -44,7 +44,7 @@ npm install
 
 ### 开发
 
-```bash
+```
 # 启动开发服务器
 npm run dev
 
@@ -54,7 +54,7 @@ npm test
 
 ### 构建
 
-```bash
+```
 # 构建生产版本（应用）
 npm run build
 
@@ -80,6 +80,7 @@ npm run build:analyze
 - [x] Icon 图标组件
 - [x] Card 卡片组件
 - [x] DatePicker 日期选择器组件
+- [x] Dropdown 下拉菜单组件
 - [x] Input 输入框组件
 - [x] Layout 布局组件
 - [x] Tooltip 文字提示组件
@@ -103,7 +104,6 @@ npm run build:analyze
 - [ ] Descriptions 描述列表
 - [ ] Divider 分割线
 - [ ] Drawer 抽屉
-- [ ] Dropdown 下拉菜单
 - [ ] Empty 空状态
 - [ ] Grid 栅格
 - [ ] Image 图片
@@ -143,7 +143,7 @@ npm run build:analyze
 
 要查看特定组件的 demo，需要修改 [src/main.tsx](file:///f:/antd-like/src/main.tsx) 文件，导入并渲染相应的 demo 组件：
 
-```tsx
+``tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import IconDemo from './components/icon/demo/basic'; // 导入要展示的 demo
@@ -159,7 +159,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 然后运行开发服务器：
 
-```bash
+```
 npm run dev
 ```
 
@@ -167,8 +167,8 @@ npm run dev
 
 1. 在 [src/components](file:///f:/antd-like/src/components) 目录下创建新组件文件夹
 2. 在组件文件夹中创建以下子目录和文件：
-   - `index.tsx` - 组件主文件
-   - `interface.ts` - 组件接口定义
+   - `index.ts` - 组件入口文件
+   - `ComponentName.tsx` - 组件主文件
    - `style/index.scss` - 组件样式文件
    - `demo/` - 组件演示文件夹
    - `__test__/` - 组件测试文件夹
@@ -177,7 +177,7 @@ npm run dev
 
 使用 Jest 和 Testing Library 编写组件测试：
 
-```bash
+```
 # 运行所有测试
 npm test
 
@@ -272,7 +272,7 @@ Modal 组件用于在当前页面正中打开一个浮层，承载相应的操�
 
 #### 使用示例
 
-```tsx
+``tsx
 import React, { useState } from 'react';
 import { Modal } from './components/modal';
 
@@ -315,8 +315,8 @@ const App: React.FC = () => {
 
 ```
 component-name/
-├── index.tsx              # 组件主文件
-├── interface.ts           # 组件接口定义（可选）
+├── index.ts               # 组件入口文件
+├── ComponentName.tsx      # 组件主文件
 ├── style/                 # 组件样式目录
 │   ├── index.scss         # 样式主文件
 │   └── index.ts           # 样式导入文件
@@ -333,6 +333,7 @@ component-name/
 
 ```
 button/
+├── index.ts               # 按钮组件入口文件
 ├── index.tsx              # 按钮组件主文件
 ├── style/
 │   ├── index.scss         # 按钮样式
@@ -371,6 +372,7 @@ form/
 
 ```
 icon/
+├── index.ts               # 图标组件入口文件
 ├── index.tsx              # 图标组件主文件
 ├── interface.ts           # 图标接口定义
 ├── utils.ts               # 工具函数
@@ -399,6 +401,40 @@ Card 组件用于展示信息块，具有以下特性：
 - 卡片嵌套支持
 - 元信息展示（头像、标题、描述）
 
+```
+card/
+├── index.ts               # 卡片组件入口文件
+├── Card.tsx               # 卡片组件主文件
+├── style/
+│   ├── index.scss         # 卡片样式
+│   └── index.ts           # 样式导入
+├── demo/
+│   └── basic.tsx          # 卡片演示
+└── __tests__/
+    └── index.test.tsx     # 卡片测试
+```
+
+#### Card 使用示例
+
+``tsx
+import React from 'react';
+import Card from './components/card';
+
+const App: React.FC = () => {
+  return (
+    <Card 
+      title="卡片标题" 
+      extra={<a href="#">更多</a>} 
+      style={{ width: 300 }}
+    >
+      <p>卡片内容</p>
+      <p>卡片内容</p>
+      <p>卡片内容</p>
+    </Card>
+  );
+};
+```
+
 ### DatePicker 组件详情
 
 DatePicker 组件是一个日期选择组件，具有以下特性：
@@ -418,6 +454,71 @@ DatePicker 组件是一个日期选择组件，具有以下特性：
 - 自动获取焦点（autoFocus 属性）
 - 面板展开状态控制（open 属性）和状态变化回调（onOpenChange 属性）
 - 自定义页脚渲染（renderExtraFooter 属性）
+
+### Dropdown 组件
+
+Dropdown 组件用于向下弹出的列表，具有以下特性：
+
+- 多种触发方式（hover、click、contextMenu）
+- 多种弹出位置（12个方位）
+- 受控与非受控模式支持
+- 菜单项分隔线
+- 图标支持
+- 禁用状态
+- 自定义容器
+- 箭头显示
+- 自动聚焦
+- 延迟显示/隐藏
+
+```
+dropdown/
+├── index.tsx              # Dropdown 组件入口文件
+├── src/
+│   ├── Dropdown.tsx       # Dropdown 主组件
+│   ├── DropdownButton.tsx # DropdownButton 组件
+│   ├── interface.ts       # 类型定义
+│   ├── placements.ts      # 位置配置
+│   └── util.ts            # 工具函数
+├── style/
+│   ├── index.scss         # 样式主文件
+│   └── index.ts           # 样式导入
+├── demo/
+│   └── basic.tsx          # Dropdown 演示
+└── __tests__/
+    └── dropdown.test.tsx  # Dropdown 测试
+```
+
+#### Dropdown 使用示例
+
+```tsx
+import React from 'react';
+import Dropdown from './components/dropdown';
+
+const items = [
+  {
+    key: '1',
+    label: '选项1',
+  },
+  {
+    key: '2',
+    label: '选项2',
+  },
+  {
+    key: '3',
+    label: '选项3',
+  }
+];
+
+const App: React.FC = () => {
+  return (
+    <Dropdown menu={{ items }}>
+      <a onClick={e => e.preventDefault()}>
+        悬停显示菜单
+      </a>
+    </Dropdown>
+  );
+};
+```
 
 ### Layout 组件
 

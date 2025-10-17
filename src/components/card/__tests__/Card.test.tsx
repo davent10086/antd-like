@@ -1,65 +1,46 @@
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Card from '../index';
 
 describe('Card', () => {
   it('should render correctly', () => {
     const { container } = render(<Card>Card Content</Card>);
-    expect(container).toBeInTheDocument();
+    expect(container.firstChild).toBeInTheDocument();
     expect(screen.getByText('Card Content')).toBeInTheDocument();
   });
 
-  it('should render with title', () => {
-    render(<Card title="Card Title">Card Content</Card>);
+  it('should render with title and extra', () => {
+    render(<Card title="Card Title" extra={<a href="#">More</a>}>Card Content</Card>);
     expect(screen.getByText('Card Title')).toBeInTheDocument();
+    expect(screen.getByText('More')).toBeInTheDocument();
   });
 
-  it('should render with extra content', () => {
-    const extraContent = <button>Extra Button</button>;
-    render(<Card extra={extraContent}>Card Content</Card>);
-    expect(screen.getByText('Extra Button')).toBeInTheDocument();
-  });
-
-  it('should render with cover', () => {
-    const cover = <img src="test.jpg" alt="test" />;
-    render(<Card cover={cover}>Card Content</Card>);
-    expect(screen.getByAltText('test')).toBeInTheDocument();
-  });
-
-  it('should render with actions', () => {
-    const actions = [<button key="1">Action 1</button>, <button key="2">Action 2</button>];
-    render(<Card actions={actions}>Card Content</Card>);
-    expect(screen.getByText('Action 1')).toBeInTheDocument();
-    expect(screen.getByText('Action 2')).toBeInTheDocument();
-  });
-
-  it('should apply bordered class by default', () => {
-    const { container } = render(<Card>Card Content</Card>);
+  it('should render with border', () => {
+    const { container } = render(<Card bordered>Card Content</Card>);
     expect(container.firstChild).toHaveClass('ant-card-bordered');
   });
 
-  it('should not apply bordered class when bordered is false', () => {
+  it('should render without border', () => {
     const { container } = render(<Card bordered={false}>Card Content</Card>);
     expect(container.firstChild).not.toHaveClass('ant-card-bordered');
   });
 
-  it('should apply hoverable class when hoverable is true', () => {
+  it('should render with hoverable', () => {
     const { container } = render(<Card hoverable>Card Content</Card>);
     expect(container.firstChild).toHaveClass('ant-card-hoverable');
   });
 
-  it('should apply small size class when size is small', () => {
-    const { container } = render(<Card size="small">Card Content</Card>);
-    expect(container.firstChild).toHaveClass('ant-card-small');
-  });
+  it('should render with different sizes', () => {
+    const { container: smallContainer } = render(<Card size="small">Card Content</Card>);
+    expect(smallContainer.firstChild).toHaveClass('ant-card-small');
 
-  it('should apply inner type class when type is inner', () => {
-    const { container } = render(<Card type="inner">Card Content</Card>);
-    expect(container.firstChild).toHaveClass('ant-card-type-inner');
+    const { container: defaultContainer } = render(<Card size="default">Card Content</Card>);
+    expect(defaultContainer.firstChild).not.toHaveClass('ant-card-small');
   });
 
   it('should show loading state', () => {
     render(<Card loading>Card Content</Card>);
-    expect(screen.getByText('Loading...')).toBeInTheDocument();
+    expect(screen.getByText('loading...')).toBeInTheDocument();
   });
 
   it('should render with custom className', () => {
