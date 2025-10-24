@@ -7,6 +7,7 @@
 - [项目概述](#项目概述)
 - [技术栈](#技术栈)
 - [快速开始](#快速开始)
+- [查看 BigDemo 演示页](#查看-bigdemo-演示页)
 - [组件库开发进度](#组件库开发进度)
 - [开发指南](#开发指南)
 - [项目结构](#项目结构)
@@ -61,31 +62,46 @@ npm run build
 # 预览构建结果
 npm run preview
 
-# 构建组件库（打包发布版本）
-npm run build:lib
+# Lint 检查
+npm run lint
 
-# 清理构建产物
-npm run clean
-
-# 构建并查看包大小分析报告
-npm run build:analyze
+# 监听模式运行测试
+npm run test:watch
 ```
+
+## 查看 BigDemo 演示页
+
+项目已内置一个综合演示页 `src/BigDemo.tsx`，聚合 Button、Input、Dropdown、Tabs、Grid、Table、Modal、Message、DatePicker、Layout 等组件，便于一次性查看整体风格与交互。
+
+1. 安装依赖后运行开发服务器：
+
+```bash
+npm run dev
+```
+
+2. 浏览器打开 Vite 提示的本地地址（一般是 http://localhost:5173/），即可看到 BigDemo 页面。
+
+BigDemo 的页面样式位于 `src/BigDemo.scss`，并使用主题变量（见 `src/themes`）。
 
 ## 组件库开发进度
 
 ### 已完成组件
 
-- [x] Button 按钮组件
-- [x] Form 表单组件
-- [x] Icon 图标组件
-- [x] Card 卡片组件
-- [x] DatePicker 日期选择器组件
-- [x] Dropdown 下拉菜单组件
-- [x] Input 输入框组件
-- [x] Layout 布局组件
-- [x] Tooltip 文字提示组件
-- [x] Modal 对话框组件
-- [x] Sider 侧边栏组件
+- [x] Button 按钮
+- [x] Card 卡片
+- [x] DatePicker 日期选择器
+- [x] Dropdown 下拉菜单
+- [x] Flex 弹性布局工具
+- [x] Grid 栅格
+- [x] Icon 图标
+- [x] Input 输入框
+- [x] Layout 布局（Header/Sider/Content/Footer）
+- [x] Message 全局提示
+- [x] Modal 对话框
+- [x] Table 表格
+- [x] Tabs 标签页
+- [x] Tooltip 文字提示
+- [x] Form（目录已预置，功能视后续完善）
 
 ### 待开发组件
 
@@ -141,13 +157,30 @@ npm run build:analyze
 
 ### 运行组件 Demo
 
-要查看特定组件的 demo，需要修改 [src/main.tsx](file:///f:/antd-like/src/main.tsx) 文件，导入并渲染相应的 demo 组件：
+要查看特定组件的 demo，有两种方式：
+
+1) 直接使用默认的 BigDemo（推荐，已在 `src/main.tsx` 配好）：
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import BigDemo from './BigDemo';
+import './themes/index.scss';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <BigDemo />
+  </React.StrictMode>,
+);
+```
+
+2) 如果想聚焦某个组件的独立 demo，可临时修改 [src/main.tsx](file:///f:/antd-like/src/main.tsx) 导入并渲染对应 demo：
 
 ``tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import IconDemo from './components/icon/demo/basic'; // 导入要展示的 demo
-import './styles/index.scss';
+import './themes/index.scss';
 
 // 渲染 demo 组件
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -193,7 +226,17 @@ npm run test:watch
 1. 使用 SCSS 预处理器
 2. 遵循 BEM 命名规范
 3. 使用项目提供的主题变量
-4. 在 [src/themes](file:///f:/antd-like/src/themes) 目录中定义全局样式变量
+4. 在 [src/themes](file:///f:/antd-like/src/themes) 目录中定义全局样式与主题变量（入口：`src/themes/index.scss`）
+
+### 样式与主题
+
+- 全局主题入口：`src/themes/index.scss`（默认引入默认主题变量、mixin 与基础样式）
+- 主题变量：`src/themes/default/variables.scss`（包含颜色、间距、字号、阴影、Layout 等）
+- 混入方法：`src/themes/mixins/mixins.scss`
+- 基础样式：`src/themes/core/base.scss`
+- BigDemo 页面样式：`src/BigDemo.scss`，通过类名（如 `.bd-header/.bd-sider/.bd-content/.bd-footer`）组织页面结构与留白
+
+在组件中尽量使用主题变量（如 `$primary-color`、`$space-md` 等），减少硬编码颜色/尺寸，保证一致性与可维护性。
 
 ## 项目结构
 
@@ -209,14 +252,15 @@ src/
 │   ├── layout/           # 布局组件
 │   ├── tooltip/          # 文字提示组件
 │   └── ...               # 其他预留组件
-├── styles/               # 全局样式
-└── themes/               # 主题变量
-    ├── index.scss        # 主题入口文件
-    ├── _color.scss       # 颜色变量
-    ├── _mixin.scss       # 混合宏
-    ├── _motion.scss      # 动效变量
-    ├── _size.scss        # 尺寸变量
-    └── dark/             # 暗色主题
+├── styles/               # 全局样式（示例）
+└── themes/               # 主题系统
+  ├── index.scss            # 主题入口（聚合变量、mixin、基础样式）
+  ├── default/
+  │   ├── colors.scss      # 颜色常量
+  │   └── variables.scss   # 主题变量（颜色/字号/间距/阴影/Layout 等）
+  ├── mixins/mixins.scss   # 通用混入
+  ├── core/base.scss       # 基础样式（reset 与全局样式）
+  └── dark/variables.scss  # 暗色主题变量（可选）
 ```
 
 ## Icon 组件详情
@@ -274,7 +318,7 @@ Modal 组件用于在当前页面正中打开一个浮层，承载相应的操�
 
 ``tsx
 import React, { useState } from 'react';
-import { Modal } from './components/modal';
+import Modal from './components/modal';
 
 const App: React.FC = () => {
   const [visible, setVisible] = useState(false);
@@ -511,10 +555,8 @@ const items = [
 
 const App: React.FC = () => {
   return (
-    <Dropdown menu={{ items }}>
-      <a onClick={e => e.preventDefault()}>
-        悬停显示菜单
-      </a>
+    <Dropdown trigger="hover" items={items}>
+      <a onClick={e => e.preventDefault()}>悬停显示菜单</a>
     </Dropdown>
   );
 };
@@ -628,3 +670,14 @@ export default defineConfig([
 ## React 编译器
 
 由于 React 编译器对开发和构建性能的影响，此模板未启用 React 编译器。要添加它，请参阅 [相关文档](https://react.dev/learn/react-compiler/installation)。
+
+## 常见问题（Sass 警告）
+
+使用 Dart Sass 构建时，可能会看到以下“弃用”警告，不影响当前功能：
+
+- Global built-in functions：如 `ceil()` 建议使用 `math.ceil`
+- Slash division：`$a / $b` 建议使用 `math.div($a, $b)` 或 `calc($a / $b)`
+- Color functions：`darken()` 建议使用 `color.adjust` 或 `color.scale`
+- `@import` 语法：建议迁移到 `@use` / `@forward`
+
+这些属于渐进式升级项，可在不影响开发的前提下逐步迁移。如果需要，可加入对应的迁移任务与示例。

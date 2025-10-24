@@ -1,4 +1,4 @@
-@use '../../themes/index' as theme;
+@import "../../../themes/index.scss";
 
 // 模态框遮罩层样式
 // 定义模态框遮罩的基本样式，包括定位、层级、背景色等
@@ -12,7 +12,7 @@
   overflow: auto;
   outline: 0;
   background-color: rgba(0, 0, 0, 0.45);
-  
+
   // 隐藏状态下的模态框遮罩样式
   &-hidden {
     display: none;
@@ -28,7 +28,7 @@
   max-width: calc(100vw - 32px);
   margin: 0 auto;
   padding: 0 0 24px;
-  
+
   // 模态框内容区域样式
   // 设置背景色、边框、阴影等视觉效果
   &-content {
@@ -39,7 +39,7 @@
     border-radius: 2px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
-  
+
   // 模态框关闭按钮样式
   // 定义关闭按钮的位置、颜色、交互效果等
   &-close {
@@ -57,13 +57,13 @@
     outline: 0;
     cursor: pointer;
     transition: color 0.3s;
-    
+
     // 关闭按钮悬停状态样式
     &:hover {
       color: rgba(0, 0, 0, 0.75);
       text-decoration: none;
     }
-    
+
     // 关闭按钮图标样式
     &-x {
       display: block;
@@ -76,7 +76,7 @@
       text-transform: none;
     }
   }
-  
+
   // 模态框头部样式
   // 设置头部内边距、颜色、边框等样式
   &-header {
@@ -86,7 +86,7 @@
     border-bottom: 1px solid #f0f0f0;
     border-radius: 2px 2px 0 0;
   }
-  
+
   // 模态框标题样式
   // 定义标题的字体、颜色、行高、换行等样式
   &-title {
@@ -97,7 +97,7 @@
     line-height: 22px;
     word-wrap: break-word;
   }
-  
+
   // 模态框主体内容样式
   // 设置内边距、字体大小、行高、换行等样式
   &-body {
@@ -106,7 +106,7 @@
     line-height: 1.5715;
     word-wrap: break-word;
   }
-  
+
   // 模态框底部操作区域样式
   // 定义底部对齐方式、边框、圆角等样式
   &-footer {
@@ -115,7 +115,7 @@
     background: transparent;
     border-top: 1px solid #f0f0f0;
     border-radius: 0 0 2px 2px;
-    
+
     // 底部按钮通用样式
     // 定义取消和确认按钮的公共样式，包括间距、尺寸、圆角、边框等
     &-cancel-btn,
@@ -129,27 +129,27 @@
       cursor: pointer;
       transition: all 0.3s;
     }
-    
+
     // 取消按钮样式
     // 设置取消按钮的背景色、字体颜色及悬停效果
     &-cancel-btn {
       background: #fff;
       color: rgba(0, 0, 0, 0.85);
-      
+
       // 取消按钮悬停状态样式
       &:hover {
         border-color: #1890ff;
         color: #1890ff;
       }
     }
-    
+
     // 确认按钮样式
     // 设置确认按钮的背景色、字体颜色、边框及悬停效果
     &-ok-btn {
       background: #1890ff;
       color: #fff;
       border-color: #1890ff;
-      
+
       // 确认按钮悬停状态样式
       &:hover {
         background: #40a9ff;

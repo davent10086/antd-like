@@ -7,7 +7,7 @@
 export const getIconName = (name: string, theme: string): string => {
   // 首字母大写
   const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
-  
+
   // 根据主题添加后缀
   switch (theme) {
     case 'filled':
@@ -27,11 +27,11 @@ export const getIconName = (name: string, theme: string): string => {
  * @param name - 图标名称
  * @returns SVG图标组件
  */
-export const createIconComponent = (svgContent: string, name: string) => {
+export const createIconComponent = (svgContent: string, _name: string) => {
   // 移除SVG中的width和height属性，使用em单位来适配字体大小
   const svgWithoutSize = svgContent
     .replace(/width="[^"]*"/, '')
     .replace(/height="[^"]*"/, '');
-  
+
   return svgWithoutSize;
 };

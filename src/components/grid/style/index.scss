@@ -1,0 +1,126 @@
+@import "../../../themes/index.scss";
+
+$row-prefix: '.ant-row';
+$col-prefix: '.ant-col';
+
+// Row base
+#{$row-prefix} {
+    display: flex;
+    flex-flow: row wrap;
+
+    &-no-wrap {
+        flex-wrap: nowrap;
+    }
+
+    &-justify-center {
+        justify-content: center;
+    }
+
+    &-justify-end {
+        justify-content: flex-end;
+    }
+
+    &-justify-space-between {
+        justify-content: space-between;
+    }
+
+    &-justify-space-around {
+        justify-content: space-around;
+    }
+
+    &-justify-space-evenly {
+        justify-content: space-evenly;
+    }
+
+    &-align-middle {
+        align-items: center;
+    }
+
+    &-align-bottom {
+        align-items: flex-end;
+    }
+}
+
+// Col base
+#{$col-prefix} {
+    position: relative;
+    min-height: 1px;
+}
+
+// 24-grid widths
+@function span-percent($n) {
+    @return (100% * $n / 24);
+}
+
+@for $i from 1 through 24 {
+    #{$col-prefix}-#{$i} {
+        flex: 0 0 span-percent($i);
+        max-width: span-percent($i);
+    }
+
+    #{$col-prefix}-offset-#{$i} {
+        margin-left: span-percent($i);
+    }
+}
+
+// order helper (not constrained)
+@for $i from 0 through 24 {
+    #{$col-prefix}-order-#{$i} {
+        order: $i;
+    }
+}
+
+// responsive helpers
+@media (max-width: 575.98px) {
+    @for $i from 1 through 24 {
+        #{$col-prefix}-xs-#{$i} {
+            flex: 0 0 span-percent($i);
+            max-width: span-percent($i);
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    @for $i from 1 through 24 {
+        #{$col-prefix}-sm-#{$i} {
+            flex: 0 0 span-percent($i);
+            max-width: span-percent($i);
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    @for $i from 1 through 24 {
+        #{$col-prefix}-md-#{$i} {
+            flex: 0 0 span-percent($i);
+            max-width: span-percent($i);
+        }
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    @for $i from 1 through 24 {
+        #{$col-prefix}-lg-#{$i} {
+            flex: 0 0 span-percent($i);
+            max-width: span-percent($i);
+        }
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1599.98px) {
+    @for $i from 1 through 24 {
+        #{$col-prefix}-xl-#{$i} {
+            flex: 0 0 span-percent($i);
+            max-width: span-percent($i);
+        }
+    }
+}
+
+@media (min-width: 1600px) {
+    @for $i from 1 through 24 {
+        #{$col-prefix}-xxl-#{$i} {
+            flex: 0 0 span-percent($i);
+            max-width: span-percent($i);
+        }
+    }
+}

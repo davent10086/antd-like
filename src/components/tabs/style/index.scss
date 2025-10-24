@@ -1,0 +1,101 @@
+@import "../../../themes/index.scss";
+
+$tabs-prefix: '.ant-tabs';
+
+#{$tabs-prefix} {
+    width: 100%;
+    color: $text-color;
+
+    &-nav {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid $border-color;
+    }
+
+    &-extra {
+        margin-left: auto;
+    }
+
+    &-tabs {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 16px;
+    }
+
+    &-tab {
+        position: relative;
+        padding: 12px 0;
+        cursor: pointer;
+        color: $text-color;
+        transition: color $animation-duration-base $ease-in-out;
+
+        &:hover {
+            color: $text-color-secondary;
+        }
+
+        &-active {
+            color: $primary-color;
+        }
+
+        &-disabled {
+            color: $disabled-color;
+            cursor: not-allowed;
+        }
+    }
+
+    &-line &-tab-active::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        height: 2px;
+        background: $primary-color;
+    }
+
+    &-card {
+        &-nav {
+            border-bottom: none;
+        }
+
+        &-tabs {
+            gap: 8px;
+        }
+
+        &-tab,
+        &-tabs>.ant-tabs-tab {
+            padding: 6px 12px;
+            border: 1px solid $border-color;
+            border-bottom: none;
+            border-radius: $border-radius-sm $border-radius-sm 0 0;
+            background: $background-color;
+
+            &.ant-tabs-tab-active {
+                background: $background-color-light;
+                color: $primary-color;
+            }
+        }
+    }
+
+    &-small &-tab {
+        padding: 8px 0;
+    }
+
+    &-large &-tab {
+        padding: 16px 0;
+    }
+
+    &-centered &-tabs {
+        justify-content: center;
+    }
+
+    &-content {
+        padding: 12px 0;
+    }
+
+    &-tabpane {
+        display: block;
+    }
+}

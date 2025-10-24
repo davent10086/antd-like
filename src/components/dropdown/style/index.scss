@@ -1,4 +1,4 @@
-@use '../../themes/index' as theme;
+@import "../../../themes/index.scss";
 
 // 下拉菜单基础样式
 // 定义了下拉菜单的整体样式，包括定位、层级、最小宽度、字体、背景色、圆角和阴影等
@@ -103,13 +103,13 @@
     animation-play-state: paused;
   }
 
-  &-slide-up-enter&-slide-up-enter-active,
-  &-slide-up-appear&-slide-up-appear-active {
+  &-slide-up-enter.ant-dropdown-slide-up-enter-active,
+  &-slide-up-appear.ant-dropdown-slide-up-appear-active {
     animation-name: antSlideUpIn;
     animation-play-state: running;
   }
 
-  &-slide-up-leave&-slide-up-leave-active {
+  &-slide-up-leave.ant-dropdown-slide-up-leave-active {
     animation-name: antSlideUpOut;
     animation-play-state: running;
   }
@@ -121,6 +121,7 @@
       transform: scaleY(0.8);
       opacity: 0;
     }
+
     100% {
       transform: scaleY(1);
       opacity: 1;
@@ -134,6 +135,7 @@
       transform: scaleY(1);
       opacity: 1;
     }
+
     100% {
       transform: scaleY(0.8);
       opacity: 0;

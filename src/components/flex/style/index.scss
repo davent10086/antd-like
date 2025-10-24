@@ -1,0 +1,91 @@
+@import "../../../themes/index.scss";
+
+$flex-prefix: '.ant-flex';
+
+/* Container */
+#{$flex-prefix} {
+    display: flex;
+}
+
+/* inline-flex */
+#{$flex-prefix}-inline {
+    display: inline-flex;
+}
+
+/* direction */
+#{$flex-prefix}-row {
+    flex-direction: row;
+}
+
+#{$flex-prefix}-column {
+    flex-direction: column;
+}
+
+/* wrap */
+#{$flex-prefix}-nowrap {
+    flex-wrap: nowrap;
+}
+
+#{$flex-prefix}-wrap {
+    flex-wrap: wrap;
+}
+
+#{$flex-prefix}-wrap-reverse {
+    flex-wrap: wrap-reverse;
+}
+
+/* justify */
+#{$flex-prefix}-justify-start {
+    justify-content: flex-start;
+}
+
+#{$flex-prefix}-justify-end {
+    justify-content: flex-end;
+}
+
+#{$flex-prefix}-justify-center {
+    justify-content: center;
+}
+
+#{$flex-prefix}-justify-space-between {
+    justify-content: space-between;
+}
+
+#{$flex-prefix}-justify-space-around {
+    justify-content: space-around;
+}
+
+#{$flex-prefix}-justify-space-evenly {
+    justify-content: space-evenly;
+}
+
+/* align */
+#{$flex-prefix}-align-start {
+    align-items: flex-start;
+}
+
+#{$flex-prefix}-align-end {
+    align-items: flex-end;
+}
+
+#{$flex-prefix}-align-center {
+    align-items: center;
+}
+
+#{$flex-prefix}-align-stretch {
+    align-items: stretch;
+}
+
+#{$flex-prefix}-align-baseline {
+    align-items: baseline;
+}
+
+/* width helper */
+#{$flex-prefix}-full-width {
+    width: 100%;
+}
+
+/* item */
+#{$flex-prefix}-item {
+    min-width: 0; // avoid overflow when flex children shrink
+}

@@ -1,4 +1,4 @@
-@import "../../themes/index.scss";
+@import "../../../themes/index.scss";
 
 $layout-prefix: '.ant-layout';
 
@@ -23,7 +23,7 @@ $layout-prefix: '.ant-layout';
    * 包含侧边栏的布局样式
    * 将主轴方向改为水平排列
    */
-  &&-has-sider {
+  &-has-sider {
     flex-direction: row;
   }
 
@@ -122,7 +122,7 @@ $layout-prefix: '.ant-layout';
      * 当侧边栏被收起为零宽度时的特殊样式
      */
     &-zero-width {
-      & > * {
+      &>* {
         overflow: hidden;
       }
 

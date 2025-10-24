@@ -2,24 +2,25 @@
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "target": "ES2023",
-    "lib": ["ES2023"],
+    "lib": [
+      "ES2023"
+    ],
     "module": "ESNext",
-    "types": ["node", "jest"],
+    "types": [
+      "node",
+      "jest"
+    ],
     "skipLibCheck": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
-
     /* JSX support for testing files */
     "jsx": "react-jsx",
-
     /* Module resolution */
     "esModuleInterop": true,
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -28,5 +29,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.*", "jest.config.*", "src/setupTests.ts", "src/**/__tests__/**/*"]
+  "include": [
+    "vite.config.*",
+    "jest.config.*",
+    "src/setupTests.ts"
+  ]
 }

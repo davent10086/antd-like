@@ -41,10 +41,10 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
     style,
     overlayClassName = '',
     overlayStyle,
-    getPopupContainer,
+    getPopupContainer: _getPopupContainer,
     arrow = false,
-    autoFocus = false,
-    destroyPopupOnHide = false,
+    autoFocus: _autoFocus = false,
+    destroyPopupOnHide: _destroyPopupOnHide = false,
     mouseEnterDelay = 0.15,
     mouseLeaveDelay = 0.1,
     children,
@@ -53,7 +53,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const isOpenControlled = open !== undefined;
   const realOpen = isOpenControlled ? open : isOpen;
-  
+
   const dropdownRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<number | null>(null);
@@ -79,12 +79,12 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
   // 鼠标进入事件处理
   const onMouseEnter = () => {
     if (disabled) return;
-    
+
     if (timerRef.current) {
       window.clearTimeout(timerRef.current);
       timerRef.current = null;
     }
-    
+
     timerRef.current = window.setTimeout(() => {
       setOpen(true);
     }, mouseEnterDelay * 1000);
@@ -93,12 +93,12 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
   // 鼠标离开事件处理
   const onMouseLeave = () => {
     if (disabled) return;
-    
+
     if (timerRef.current) {
       window.clearTimeout(timerRef.current);
       timerRef.current = null;
     }
-    
+
     timerRef.current = window.setTimeout(() => {
       setOpen(false);
     }, mouseLeaveDelay * 1000);
@@ -115,7 +115,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
     if (menu) {
       return menu;
     }
-    
+
     if (items && items.length > 0) {
       return (
         <ul className="ant-dropdown-menu">
@@ -123,10 +123,10 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
             if (item.divider) {
               return <li key={index} className="ant-dropdown-menu-item-divider" />;
             }
-            
+
             return (
-              <li 
-                key={item.key || index} 
+              <li
+                key={item.key || index}
                 className={`ant-dropdown-menu-item ${item.disabled ? 'ant-dropdown-menu-item-disabled' : ''}`}
                 onClick={!item.disabled ? () => {
                   // 处理菜单项点击事件
@@ -141,7 +141,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
         </ul>
       );
     }
-    
+
     return null;
   };
 
@@ -157,7 +157,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
   // 触发器事件处理
   const getTriggerEvents = () => {
     const events: Record<string, any> = {};
-    
+
     if (trigger === 'hover') {
       events.onMouseEnter = onMouseEnter;
       events.onMouseLeave = onMouseLeave;
@@ -169,7 +169,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
         setOpen(true);
       };
     }
-    
+
     return events;
   };
 

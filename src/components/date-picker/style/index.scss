@@ -14,7 +14,7 @@ $date-picker-prefix: '.ant-date-picker';
   display: inline-block;
   width: 100%;
   min-width: 120px;
-  
+
   // 输入框样式
   &-input {
     position: relative;
@@ -30,37 +30,37 @@ $date-picker-prefix: '.ant-date-picker';
     border-radius: $border-radius-base;
     transition: all $animation-duration-base $ease-in-out;
     cursor: pointer;
-    
+
     // 输入框悬停状态样式（非禁用状态）
     &:hover:not(&-disabled) {
       border-color: $primary-color;
     }
-    
+
     // 输入框聚焦状态样式
     &:focus {
       outline: 0;
       border-color: $primary-color;
       box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
     }
-    
+
     // 禁用状态的输入框样式
     &-disabled {
       color: $disabled-color;
       background-color: $background-color;
       cursor: not-allowed;
       opacity: 1;
-      
+
       &:hover {
         border-color: $border-color;
       }
     }
-    
+
     // 只读状态的输入框样式
     &-readonly {
       cursor: pointer;
     }
   }
-  
+
   // 日期面板
   &-panel {
     position: absolute;
@@ -73,7 +73,7 @@ $date-picker-prefix: '.ant-date-picker';
     border-radius: $border-radius-base;
     box-shadow: $shadow-2;
     margin-top: 4px;
-    
+
     // 面板头部
     &-header {
       display: flex;
@@ -83,7 +83,7 @@ $date-picker-prefix: '.ant-date-picker';
       height: 40px;
       line-height: 40px;
       border-bottom: 1px solid $border-color-split;
-      
+
       // 上一个月/下一个月按钮样式
       &-prev,
       &-next {
@@ -95,35 +95,35 @@ $date-picker-prefix: '.ant-date-picker';
         border-radius: $border-radius-sm;
         cursor: pointer;
         transition: all $animation-duration-base;
-        
+
         &:hover {
           background-color: $item-hover-bg;
           color: $primary-color;
         }
       }
-      
+
       // 头部标题样式
       &-title {
         font-weight: 500;
         cursor: pointer;
-        
+
         &:hover {
           color: $primary-color;
         }
       }
     }
-    
+
     // 面板主体
     &-body {
       padding: 8px 12px;
     }
-    
+
     // 日期表格
     &-table {
       width: 100%;
       table-layout: fixed;
       border-collapse: collapse;
-      
+
       // 表格头部（星期几）
       th {
         width: 32px;
@@ -132,18 +132,18 @@ $date-picker-prefix: '.ant-date-picker';
         text-align: center;
         color: $text-color-secondary;
       }
-      
+
       // 表格数据单元格
       td {
         padding: 0;
         text-align: center;
       }
     }
-    
+
     // 日期单元格
     &-cell {
       padding: 3px 0;
-      
+
       // 日期单元格内部元素样式
       &-inner {
         display: inline-block;
@@ -153,35 +153,35 @@ $date-picker-prefix: '.ant-date-picker';
         border-radius: $border-radius-sm;
         cursor: pointer;
         transition: all $animation-duration-base;
-        
+
         &:hover {
           background-color: $item-hover-bg;
         }
       }
-      
+
       // 今日样式
       &-today {
-        .#{$date-picker-prefix}-panel-cell-inner {
+        #{$date-picker-prefix}-panel-cell-inner {
           color: $primary-color;
           font-weight: bold;
         }
       }
-      
+
       // 选中日期样式
       &-selected {
-        .#{$date-picker-prefix}-panel-cell-inner {
+        #{$date-picker-prefix}-panel-cell-inner {
           background-color: $primary-color;
           color: $background-color-light;
         }
       }
-      
+
       // 不在当前月份的日期（禁用状态）
       &-disabled {
-        .#{$date-picker-prefix}-panel-cell-inner {
+        #{$date-picker-prefix}-panel-cell-inner {
           color: $disabled-color;
           background-color: transparent;
           cursor: not-allowed;
-          
+
           &:hover {
             background-color: transparent;
           }
@@ -189,7 +189,7 @@ $date-picker-prefix: '.ant-date-picker';
       }
     }
   }
-  
+
   // 大尺寸变体
   &-large {
     #{$date-picker-prefix}-input {
@@ -197,7 +197,7 @@ $date-picker-prefix: '.ant-date-picker';
       font-size: $font-size-lg;
     }
   }
-  
+
   // 小尺寸变体
   &-small {
     #{$date-picker-prefix}-input {
@@ -205,14 +205,14 @@ $date-picker-prefix: '.ant-date-picker';
       font-size: $font-size-sm;
     }
   }
-  
+
   // 无边框输入框样式
   &-borderless {
     #{$date-picker-prefix}-input {
       background-color: transparent;
       border-color: transparent;
       box-shadow: none;
-      
+
       &:focus,
       &:hover {
         background-color: $item-hover-bg;

@@ -1,4 +1,4 @@
-@use '../../themes/index' as theme;
+@import "../../../themes/index.scss";
 
 // 定义组件的宿主元素样式，设置为内联块级元素
 :host {
@@ -7,8 +7,7 @@
 
 // 输入框组件的主要样式定义
 .input {
-  @include theme.mixin-component();
-  
+
   // 设置相对定位，便于内部元素绝对定位
   position: relative;
   // 设置为内联块级元素
@@ -20,15 +19,15 @@
   // 设置行高为1.5倍
   line-height: 1.5;
   // 设置文字颜色
-  color: theme.$text-color;
+  color: $text-color;
   // 设置背景颜色
-  background-color: theme.$input-bg;
+  background-color: #fff;
   // 设置背景图片为无
   background-image: none;
   // 设置边框样式
-  border: 1px solid theme.$border-color;
+  border: 1px solid $border-color;
   // 设置圆角
-  border-radius: theme.$border-radius-base;
+  border-radius: $border-radius-base;
   // 设置过渡动画效果
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   // 设置宽度为100%
@@ -37,7 +36,7 @@
   // 鼠标悬停时的样式
   &:hover {
     // 改变边框颜色
-    border-color: theme.$primary-color-hover;
+    border-color: $primary-color;
   }
 
   // 获得焦点时的样式
@@ -45,19 +44,19 @@
     // 取消默认轮廓
     outline: none;
     // 设置边框颜色为主题主色
-    border-color: theme.$primary-color;
+    border-color: $primary-color;
     // 添加阴影效果
-    box-shadow: 0 0 0 2px rgba(theme.$primary-color-rgb, 0.2);
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
   }
 
   // 禁用状态的样式
   &-disabled {
     // 设置禁用状态下的文字颜色
-    color: theme.$text-color-disabled;
+    color: $disabled-color;
     // 设置禁用状态下的背景颜色
-    background-color: theme.$input-bg-disabled;
+    background-color: $background-color;
     // 设置禁用状态下的边框颜色
-    border-color: theme.$border-color-disabled;
+    border-color: $border-color;
     // 设置鼠标样式为不可用
     cursor: not-allowed;
     // 设置透明度为1

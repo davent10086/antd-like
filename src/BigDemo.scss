@@ -1,0 +1,99 @@
+@import './themes/default/variables.scss';
+@import './themes/mixins/mixins.scss';
+
+.big-demo {
+    min-height: 100vh;
+    background: $layout-body-background;
+
+    // Header
+    .bd-header {
+        background: $primary-color;
+        color: #fff;
+
+        .bd-header-inner {
+            display: flex;
+            align-items: center;
+            gap: $space-md;
+            min-height: $layout-header-height;
+            padding: 0 $space-lg;
+
+            strong {
+                font-size: $heading-5-size;
+                color: #fff;
+            }
+
+            .bd-header-actions {
+                margin-left: auto;
+            }
+        }
+    }
+
+    // Sider
+    .bd-sider {
+        background: darken($primary-color, 12%);
+        color: #fff;
+        padding: $space-md;
+    }
+
+    // Content
+    .bd-content {
+        padding: $layout-content-padding;
+        background: $layout-content-background;
+
+        .bd-section {
+            margin-top: $space-md;
+        }
+
+        .bd-link {
+            color: $primary-color;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.85;
+            }
+        }
+
+        .bd-subtitle {
+            color: $primary-color;
+            margin: $space-sm 0;
+            font-size: $heading-5-size;
+            font-weight: 600;
+        }
+
+        .bd-grid-box {
+            background: $item-hover-bg;
+            padding: $space-sm;
+            border: 1px dashed $border-color;
+            border-radius: $border-radius-sm;
+            text-align: center;
+            color: $text-color;
+        }
+
+        .mt-lg {
+            margin-top: $space-lg;
+        }
+    }
+
+    // Footer
+    .bd-footer {
+        text-align: center;
+        padding: $layout-footer-padding;
+        background: $layout-footer-background;
+        color: $text-color-secondary;
+    }
+}
+
+// Responsive tweaks
+@media (max-width: 768px) {
+    .big-demo {
+        .bd-header {
+            .bd-header-inner {
+                padding: 0 $space-md;
+            }
+        }
+
+        .bd-content {
+            padding: $space-md;
+        }
+    }
+}
