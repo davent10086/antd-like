@@ -1,5 +1,4 @@
-import React from 'react';
-import Table, { ColumnType } from '..';
+import Table, { type ColumnType } from '..';
 
 interface User {
     key: number;

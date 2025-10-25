@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Flex, Tabs, Row, Col, Table, type ColumnType } from './components';
+import { Button, Flex, Row, Col, Table, type ColumnType } from './components';
 import Layout from './components/layout';
 import Dropdown from './components/dropdown';
 import Input from './components/input';
@@ -8,6 +8,19 @@ import DatePicker from './components/date-picker';
 import Tooltip from './components/tooltip/imdex';
 import message, { MessageHolder } from './components/message';
 import Modal from './components/modal/src/Modal';
+// individual demos
+import ButtonDemo from './components/button/demo/basic';
+import InputDemo from './components/input/demo/basic';
+import DropdownDemo from './components/dropdown/demo/basic';
+import DatePickerDemo from './components/date-picker/demo/basic';
+import TooltipDemo from './components/tooltip/demo/basic';
+import TabsDemo from './components/tabs/demo/basic';
+import GridDemo from './components/grid/demo/basic';
+import FlexDemo from './components/flex/demo/basic';
+import TableDemo from './components/table/demo/basic';
+import CardDemo from './components/card/demo/basic';
+import MessageDemo from './components/message/demo/basic';
+import LayoutDemo from './components/layout/demo/simple';
 
 // styles (for components that don't self-import all styles)
 import './components/table/style/index.scss';
@@ -42,6 +55,55 @@ const tableData: User[] = [
 export default function BigDemo() {
     const [open, setOpen] = useState(false);
     const [count, setCount] = useState(0);
+    type DemoKey = 'overview' | 'button' | 'input' | 'dropdown' | 'date-picker' | 'tooltip' | 'tabs' | 'table' | 'grid' | 'flex' | 'card' | 'message' | 'layout';
+    const [active, setActive] = useState<DemoKey>('overview');
+
+    const siderMenus: Array<{ key: DemoKey; label: string }> = [
+        { key: 'overview', label: '概览' },
+        { key: 'button', label: 'Button 按钮' },
+        { key: 'input', label: 'Input 输入框' },
+        { key: 'dropdown', label: 'Dropdown 下拉菜单' },
+        { key: 'date-picker', label: 'DatePicker 日期' },
+        { key: 'tooltip', label: 'Tooltip 提示' },
+        { key: 'tabs', label: 'Tabs 标签页' },
+        { key: 'table', label: 'Table 表格' },
+        { key: 'grid', label: 'Grid 栅格' },
+        { key: 'flex', label: 'Flex 布局' },
+        { key: 'card', label: 'Card 卡片' },
+        { key: 'message', label: 'Message 提示' },
+        { key: 'layout', label: 'Layout 布局' },
+    ];
+
+    const renderOverview = () => (
+        <div>
+            <Flex gap={12} wrap>
+                <Button type="primary" onClick={() => setCount((c) => c + 1)}>
+                    计数 +1（{count}）
+                </Button>
+                <Tooltip content="这是一个提示">
+                    <Button>悬停提示</Button>
+                </Tooltip>
+                <Button type="dashed" onClick={() => message.info('信息提示')}>信息</Button>
+                <Button onClick={() => setOpen(true)}>打开弹窗</Button>
+            </Flex>
+
+            <Row gutter={[16, 16]} className="bd-section">
+                <Col span={12}>
+                    <Card title="表单元素" extra={<span className="bd-link">更多</span>}>
+                        <Flex direction="column" gap={12}>
+                            <Input placeholder="用户名" />
+                            <DatePicker />
+                        </Flex>
+                    </Card>
+                </Col>
+                <Col span={12}>
+                    <Card title="表格数据">
+                        <Table<User> columns={tableColumns} dataSource={tableData} bordered size="small" />
+                    </Card>
+                </Col>
+            </Row>
+        </div>
+    );
 
     return (
         <div className="big-demo">
@@ -69,72 +131,34 @@ export default function BigDemo() {
                         </div>
                     </div>
                 </Header>
-                <Layout>
-                    <Sider className="bd-sider">侧边栏</Sider>
+                <Layout hasSider>
+                    <Sider className="bd-sider">
+                        <ul className="bd-menu">
+                            {siderMenus.map((m) => (
+                                <li
+                                    key={m.key}
+                                    className={['bd-menu-item', active === m.key ? 'active' : ''].join(' ')}
+                                    onClick={() => setActive(m.key)}
+                                >
+                                    {m.label}
+                                </li>
+                            ))}
+                        </ul>
+                    </Sider>
                     <Content className="bd-content">
-                        <Tabs
-                            type="line"
-                            items={[
-                                {
-                                    key: 'overview',
-                                    label: '概览',
-                                    children: (
-                                        <div>
-                                            <Flex gap={12} wrap>
-                                                <Button type="primary" onClick={() => setCount((c) => c + 1)}>
-                                                    计数 +1（{count}）
-                                                </Button>
-                                                <Tooltip content="这是一个提示">
-                                                    <Button>悬停提示</Button>
-                                                </Tooltip>
-                                                <Button type="dashed" onClick={() => message.info('信息提示')}>信息</Button>
-                                                <Button onClick={() => setOpen(true)}>打开弹窗</Button>
-                                            </Flex>
-
-                                            <Row gutter={[16, 16]} className="bd-section">
-                                                <Col span={12}>
-                                                    <Card title="表单元素" extra={<span className="bd-link">更多</span>}>
-                                                        <Flex direction="column" gap={12}>
-                                                            <Input placeholder="用户名" />
-                                                            <DatePicker />
-                                                        </Flex>
-                                                    </Card>
-                                                </Col>
-                                                <Col span={12}>
-                                                    <Card title="表格数据">
-                                                        <Table<User> columns={tableColumns} dataSource={tableData} bordered size="small" />
-                                                    </Card>
-                                                </Col>
-                                            </Row>
-                                        </div>
-                                    ),
-                                },
-                                {
-                                    key: 'layout',
-                                    label: '布局',
-                                    children: (
-                                        <div>
-                                            <h4 className="bd-subtitle">Grid \u0020 24 栅格</h4>
-                                            <Row gutter={16}>
-                                                <Col span={6}><div className="bd-grid-box">col-6</div></Col>
-                                                <Col span={6}><div className="bd-grid-box">col-6</div></Col>
-                                                <Col span={6}><div className="bd-grid-box">col-6</div></Col>
-                                                <Col span={6}><div className="bd-grid-box">col-6</div></Col>
-                                            </Row>
-
-                                            <h4 className="bd-subtitle mt-lg">Flex 灵活布局</h4>
-                                            <Flex gap={8} wrap>
-                                                <Button type="primary">主要</Button>
-                                                <Button>默认</Button>
-                                                <Button type="dashed">虚线</Button>
-                                                <Button type="text">文本</Button>
-                                                <Button type="link">链接</Button>
-                                            </Flex>
-                                        </div>
-                                    ),
-                                },
-                            ]}
-                        />
+                        {active === 'overview' && renderOverview()}
+                        {active === 'button' && <ButtonDemo />}
+                        {active === 'input' && <InputDemo />}
+                        {active === 'dropdown' && <DropdownDemo />}
+                        {active === 'date-picker' && <DatePickerDemo />}
+                        {active === 'tooltip' && <TooltipDemo />}
+                        {active === 'tabs' && <TabsDemo />}
+                        {active === 'table' && <TableDemo />}
+                        {active === 'grid' && <GridDemo />}
+                        {active === 'flex' && <FlexDemo />}
+                        {active === 'card' && <CardDemo />}
+                        {active === 'message' && <MessageDemo />}
+                        {active === 'layout' && <LayoutDemo />}
 
                         <Modal
                             visible={open}

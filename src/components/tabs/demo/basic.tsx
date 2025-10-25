@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Tabs, { TabItem } from '..';
+import { useState } from 'react';
+import Tabs, { type TabItem } from '..';
 
 const BasicDemo: React.FC = () => {
     const [active, setActive] = useState('1');

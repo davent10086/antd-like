@@ -3,6 +3,86 @@
 // 定义 tooltip 组件的 CSS 类名前缀
 $tooltip-prefix: '.ant-tooltip';
 
+// 新版 Tooltip（与组件类名一致）
+.tooltip {
+  position: relative;
+  display: inline-block;
+
+  &-trigger {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &-content {
+    position: absolute;
+    z-index: 1060;
+    padding: 8px 10px;
+    color: #fff;
+    text-align: left;
+    background-color: rgba($gray-13, 0.75);
+    border-radius: $border-radius-base;
+    box-shadow: 0 2px 8px rgba($gray-13, 0.15);
+    min-height: 28px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .18s ease, visibility .18s ease;
+    // 默认位置：上方居中
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &-open &-content {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  // 位置变体
+  &-placement-top &-content {
+    bottom: calc(100% + 6px);
+    top: auto;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  &-placement-bottom &-content {
+    top: calc(100% + 6px);
+    bottom: auto;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  &-placement-left &-content {
+    right: calc(100% + 6px);
+    left: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+
+  &-placement-right &-content {
+    left: calc(100% + 6px);
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+
+  // 复用旧版 API 的标题/描述样式
+  &-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &-description {
+    opacity: .95;
+  }
+}
+
 // Tooltip 根元素样式定义
 #{$tooltip-prefix} {
   // 设置绝对定位，使 tooltip 可以精确控制位置
@@ -19,51 +99,51 @@ $tooltip-prefix: '.ant-tooltip';
   line-height: 1.5;
   // 初始透明度为 0，实现淡入淡出效果
   opacity: 0;
-  
+
   // Hidden state
   // 隐藏状态样式，完全不显示元素
   &-hidden {
     display: none;
   }
-  
+
   // Placement variations
   // 不同方向的 tooltip 样式设置，控制相应方向上的间距
   &-placement-top {
     padding: 5px 0;
   }
-  
+
   &-placement-topLeft,
   &-placement-topRight {
     padding: 5px 0;
   }
-  
+
   &-placement-right {
     padding: 0 5px;
   }
-  
+
   &-placement-rightTop,
   &-placement-rightBottom {
     padding: 0 5px;
   }
-  
+
   &-placement-bottom {
     padding: 5px 0;
   }
-  
+
   &-placement-bottomLeft,
   &-placement-bottomRight {
     padding: 5px 0;
   }
-  
+
   &-placement-left {
     padding: 0 5px;
   }
-  
+
   &-placement-leftTop,
   &-placement-leftBottom {
     padding: 0 5px;
   }
-  
+
   // Inner content
   // tooltip 内容区域样式
   &-inner {
@@ -84,7 +164,7 @@ $tooltip-prefix: '.ant-tooltip';
     // 设置最小高度保证可读性
     min-height: 32px;
   }
-  
+
   // Arrow
   // tooltip 箭头样式
   &-arrow {
@@ -98,7 +178,7 @@ $tooltip-prefix: '.ant-tooltip';
     // 边框样式为实线
     border-style: solid;
   }
-  
+
   // Arrow placements
   // 不同方向的箭头定位和样式
   &-placement-top &-arrow,
@@ -115,18 +195,18 @@ $tooltip-prefix: '.ant-tooltip';
     // 上边框颜色与 tooltip 背景色一致
     border-top-color: rgba($gray-13, 0.75); // 使用主题变量
   }
-  
+
   &-placement-topLeft &-arrow {
     // 左上角箭头调整左边距
     left: 16px;
   }
-  
+
   &-placement-topRight &-arrow {
     // 右上角箭头调整右边距
     right: 16px;
     left: auto;
   }
-  
+
   &-placement-right &-arrow,
   &-placement-rightTop &-arrow,
   &-placement-rightBottom &-arrow {
@@ -141,18 +221,18 @@ $tooltip-prefix: '.ant-tooltip';
     // 右边框颜色与 tooltip 背景色一致
     border-right-color: rgba($gray-13, 0.75); // 使用主题变量
   }
-  
+
   &-placement-rightTop &-arrow {
     // 右上角箭头调整上边距
     top: 8px;
   }
-  
+
   &-placement-rightBottom &-arrow {
     // 右下角箭头调整下边距
     bottom: 8px;
     top: auto;
   }
-  
+
   &-placement-left &-arrow,
   &-placement-leftTop &-arrow,
   &-placement-leftBottom &-arrow {
@@ -167,18 +247,18 @@ $tooltip-prefix: '.ant-tooltip';
     // 左边框颜色与 tooltip 背景色一致
     border-left-color: rgba($gray-13, 0.75); // 使用主题变量
   }
-  
+
   &-placement-leftTop &-arrow {
     // 左上角箭头调整上边距
     top: 8px;
   }
-  
+
   &-placement-leftBottom &-arrow {
     // 左下角箭头调整下边距
     bottom: 8px;
     top: auto;
   }
-  
+
   &-placement-bottom &-arrow,
   &-placement-bottomLeft &-arrow,
   &-placement-bottomRight &-arrow {
@@ -193,43 +273,43 @@ $tooltip-prefix: '.ant-tooltip';
     // 下边框颜色与 tooltip 背景色一致
     border-bottom-color: rgba($gray-13, 0.75); // 使用主题变量
   }
-  
+
   &-placement-bottomLeft &-arrow {
     // 左下角箭头调整左边距
     left: 16px;
   }
-  
+
   &-placement-bottomRight &-arrow {
     // 右下角箭头调整右边距
     right: 16px;
     left: auto;
   }
-  
+
   // Color variations
   // 不同颜色主题的 tooltip 样式
   &-pink &-inner {
     // 粉色主题的内容背景色
     background-color: $red-6; // 使用主题错误色变量替代硬编码粉色
   }
-  
+
   &-pink &-arrow {
     // 粉色主题的箭头颜色
     border-top-color: $red-6; // 使用主题变量
-    
+
     // 不同方向的粉色箭头颜色设置
     &#{$tooltip-prefix}-placement-right {
       border-right-color: $red-6;
     }
-    
+
     &#{$tooltip-prefix}-placement-left {
       border-left-color: $red-6;
     }
-    
+
     &#{$tooltip-prefix}-placement-bottom {
       border-bottom-color: $red-6;
     }
   }
-  
+
   // Open state
   // 显示状态，透明度设为1完全显示
   &-open {

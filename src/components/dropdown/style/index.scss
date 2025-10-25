@@ -1,10 +1,17 @@
 @import "../../../themes/index.scss";
 
+// 触发器外层容器，用于承载绝对定位的下拉层
+.ant-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
 // 下拉菜单基础样式
 // 定义了下拉菜单的整体样式，包括定位、层级、最小宽度、字体、背景色、圆角和阴影等
 .ant-dropdown {
   position: absolute;
-  top: 0;
+  // 默认在触发器正下方对齐左侧
+  top: calc(100% + 4px);
   left: 0;
   z-index: 1050;
   min-width: 120px;
@@ -17,6 +24,33 @@
   border-radius: 2px;
   box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
   transform-origin: 0 0;
+
+  // 基于 placement 的位置修正
+  &.ant-dropdown-placement-bottomLeft {
+    top: calc(100% + 4px);
+    left: 0;
+    right: auto;
+  }
+
+  &.ant-dropdown-placement-bottomRight {
+    top: calc(100% + 4px);
+    right: 0;
+    left: auto;
+  }
+
+  &.ant-dropdown-placement-topLeft {
+    bottom: calc(100% + 4px);
+    top: auto;
+    left: 0;
+    right: auto;
+  }
+
+  &.ant-dropdown-placement-topRight {
+    bottom: calc(100% + 4px);
+    top: auto;
+    right: 0;
+    left: auto;
+  }
 
   // 隐藏状态的下拉菜单
   &-hidden {

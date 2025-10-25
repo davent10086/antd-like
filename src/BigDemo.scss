@@ -33,6 +33,31 @@
         background: darken($primary-color, 12%);
         color: #fff;
         padding: $space-md;
+
+        .bd-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            .bd-menu-item {
+                padding: 8px 10px;
+                border-radius: $border-radius-sm;
+                cursor: pointer;
+                color: rgba(255, 255, 255, 0.85);
+                transition: background $animation-duration-base ease, color $animation-duration-base ease;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.15);
+                    color: #fff;
+                }
+
+                &.active {
+                    background: rgba(255, 255, 255, 0.25);
+                    color: #fff;
+                    font-weight: 600;
+                }
+            }
+        }
     }
 
     // Content
